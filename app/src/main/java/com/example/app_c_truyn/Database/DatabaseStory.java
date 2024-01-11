@@ -1,5 +1,4 @@
 package com.example.app_c_truyn.Database;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,7 +9,6 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.example.app_c_truyn.Model.User;
-
 public class DatabaseStory extends SQLiteOpenHelper {
     private static String DATABASE_NAME = "doctruyen";
     private static String TABLE_TAIKHOAN = "taikhoan";
@@ -42,7 +40,6 @@ public class DatabaseStory extends SQLiteOpenHelper {
     public DatabaseStory(@Nullable Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_ACCOUNT);
