@@ -43,97 +43,111 @@ public class AdminActivity extends AppCompatActivity {
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // lay id tai khoan da biet tai khoan admin nao da vao chinh sua
+                // Get the ID of the logged-in admin account
                 Intent intent1 = getIntent();
-                int id = intent1.getIntExtra("Id",0);
-                //tiep tuc gui id qua man hinh them truyeb
-                Intent intent = new Intent(AdminActivity.this,AddStoryActivity.class);
-                intent.putExtra("Id",id);
+                int id = intent1.getIntExtra("Id", 0);
+
+                // Pass the ID to the AddStoryActivity
+                Intent intent = new Intent(AdminActivity.this, AddStoryActivity.class);
+                intent.putExtra("Id", id);
                 startActivity(intent);
             }
         });
 
-        //click item long se xoa item
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-                DialogDelete(position);
-                int idtruyen = storyArrayList.get(position).getID();
-                // xoa du lieu
-                databaseStory.Delete(idtruyen);
-                // cap nhat lai activiti
-                Intent intent = new Intent(AdminActivity.this,AdminActivity.class);
-                finish();
-                startActivity(intent);
-
-                Toast.makeText(AdminActivity.this, "Xoa truyen thanh cong", Toast.LENGTH_SHORT).show();
-
+                showOptionsDialog(position);
                 return false;
             }
         });
     }
-    // phuong thuc dialog hien thi cua so xoa
-    private void DialogDelete(int position){
-        Dialog dialog = new Dialog(this);
-        // nap layout vao dialog
 
-        dialog.setContentView(R.layout.dialogdelete);
-        //tat click ra ngoai la dong ,chi click ra no moi dong
+    private void showOptionsDialog(int position) {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_optical);
         dialog.setCanceledOnTouchOutside(false);
-        // anh xa
-        Button btnYes = dialog.findViewById(R.id.buttonYes);
-        Button btnNo = dialog.findViewById(R.id.buttonNo);
+
+        Button btnEdit = dialog.findViewById(R.id.buttonEdit);
+        Button btnDelete = dialog.findViewById(R.id.buttonDelete);
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the ID of the selected story
+                int storyId = storyArrayList.get(position).getID();
+
+                // Pass the story ID to the EditStoryActivity
+                Intent intent = new Intent(AdminActivity.this, EditStoryActivity.class);
+                intent.putExtra("story_id", storyId);
+                startActivity(intent);
+
+                dialog.dismiss();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDeleteConfirmationDialog(position);
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private void showDeleteConfirmationDialog(int position) {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialogdelete);
+        dialog.setCanceledOnTouchOutside(false);
+
+        Button btnYes = dialog.findViewById(R.id.btn_save);
+        Button btnNo = dialog.findViewById(R.id.btn_cancel);
 
         btnYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int idtruyen = storyArrayList.get(position).getID();
-                // xoa du lieu
-                databaseStory.Delete(idtruyen);
-                // cap nhat lai activiti
-                Intent intent = new Intent(AdminActivity.this,AdminActivity.class);
+                int storyId = storyArrayList.get(position).getID();
+                databaseStory.Delete(storyId);
 
-                startActivity(intent);
+                Intent intent = new Intent(AdminActivity.this, AdminActivity.class);
                 finish();
-                Toast.makeText(AdminActivity.this, "Xoa truyen thanh cong", Toast.LENGTH_SHORT).show();
+                startActivity(intent);
 
+                Toast.makeText(AdminActivity.this, "Xóa truyện thành công", Toast.LENGTH_SHORT).show();
 
+                dialog.dismiss();
             }
         });
+
         btnNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //thuc hien doc dialog
-                dialog.cancel();
+                dialog.dismiss();
             }
         });
-        // run dialog
+
         dialog.show();
-
-
     }
-    // gan du lieu cho list view
+
     private void initList() {
         storyArrayList = new ArrayList<>();
         databaseStory = new DatabaseStory(this);
 
-        Cursor cursor1 = databaseStory.getData2();
-        while (cursor1.moveToNext()){
+        Cursor cursor1 = databaseStory.getAllStory();
+        while (cursor1.moveToNext()) {
             int id = cursor1.getInt(0);
             String tentruyen = cursor1.getString(1);
             String noidung = cursor1.getString(2);
             String anh = cursor1.getString(3);
             int id_tk = cursor1.getInt(4);
 
-            storyArrayList.add(new Story(id,tentruyen,noidung,anh,id_tk));
-
-            adapterStory = new AdapterStory(getApplicationContext(),storyArrayList);
-
-            listView.setAdapter(adapterStory);
-
+            storyArrayList.add(new Story(id, tentruyen, noidung, anh, id_tk));
         }
-        cursor1.moveToFirst();
         cursor1.close();
+
+        adapterStory = new AdapterStory(getApplicationContext(), storyArrayList);
+        listView.setAdapter(adapterStory);
     }
 }

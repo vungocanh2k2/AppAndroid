@@ -4,6 +4,8 @@ public class User {
     private int Id;
     private String UserName;
 
+    public User() {}
+
     public User(String userName, String passWord, String email, int roles) {
         UserName = userName;
         PassWord = passWord;
