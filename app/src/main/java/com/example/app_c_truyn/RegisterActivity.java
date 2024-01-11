@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
         String email = edtDKEmail.getText().toString();
         int phanquyen = 1;
 
-        User user = new User(userName, passWord, email, phanquyen);
+        User user = new User();
         return user;
     }
 
