@@ -11,6 +11,11 @@ public class User {
         Roles = roles;
     }
 
+    public User(String userName, String email) {
+        UserName = userName;
+        Email = email;
+    }
+
     public int getId() {
         return Id;
     }
