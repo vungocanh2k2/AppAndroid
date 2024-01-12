@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
 import com.example.app_c_truyn.Adapter.AdapterCategory;
+import com.example.app_c_truyn.Adapter.AdapterInformation;
 import com.example.app_c_truyn.Adapter.AdapterStory;
 import com.example.app_c_truyn.Admin.Story.ListStoryActivity;
 import com.example.app_c_truyn.Admin.User.ListUserActivity;
@@ -36,14 +37,17 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     ListView listView,listViewNew,listViewThongTin;
     DrawerLayout drawerLayout;
-    String email;
-    String nameUser;
+    String email,nameUser;
+
     ArrayList<Category> categoryArrayList;
-    ArrayList<Story> TruyenArraylist;
+    ArrayList<Story> storyArrayList;
+    ArrayList<User> userArrayList;
+
     AdapterStory adapterStory;
-    ArrayList<User> userArrayListArrayList;
     AdapterCategory adapterCategory;
-    DatabaseStory databaseStory;
+    AdapterInformation adapterInformation;
+
+    DatabaseStory db;
 
 
     @Override
@@ -52,14 +56,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        databaseStory = new DatabaseStory(this);
+        db = new DatabaseStory(this);
 
         // nhan du lieu o man dang nhap gui
-        Intent intentpq = getIntent();
-        int i = intentpq.getIntExtra("phanq",0);
-        int idd = intentpq.getIntExtra("idd",0);
-        email = intentpq.getStringExtra("email");
-        nameUser = intentpq.getStringExtra("tentaikhoan");
+        Intent intent = getIntent();
+        int i = intent.getIntExtra("phanq",0);
+        int idd = intent.getIntExtra("idd",0);
+        email = intent.getStringExtra("email");
+        nameUser = intent.getStringExtra("tentaikhoan");
 
         toolbar = findViewById(R.id.toolbarmanhinhchinh);
         viewFlipper = findViewById(R.id.viewflipper);
@@ -69,18 +73,19 @@ public class MainActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigatationView);
         drawerLayout = findViewById(R.id.drawerlayout);
 
-        TruyenArraylist = new ArrayList<>();
+        storyArrayList = new ArrayList<>();
 
-        Cursor cursor1 = databaseStory.getData();
+        Cursor cursor1 = db.getDataStory();
+
         while (cursor1.moveToNext()){
             int id = cursor1.getInt(0);
-            String tentruyen = cursor1.getString(1);
-            String noidung = cursor1.getString(2);
-            String anh = cursor1.getString(3);
+            String nameStory = cursor1.getString(1);
+            String content = cursor1.getString(2);
+            String image = cursor1.getString(3);
             int id_tk = cursor1.getInt(4);
 
-            TruyenArraylist.add(new Story(id,tentruyen,noidung,anh,id_tk));
-            adapterStory = new AdapterStory(getApplicationContext(),TruyenArraylist);
+            storyArrayList.add(new Story(id,nameStory,content,image,id_tk));
+            adapterStory = new AdapterStory(getApplicationContext(),storyArrayList);
             listViewNew.setAdapter(adapterStory);
 
         }
@@ -88,23 +93,20 @@ public class MainActivity extends AppCompatActivity {
         cursor1.close();
 
         //thong tin
-        userArrayListArrayList = new ArrayList<>();
-        userArrayListArrayList.add(new User(nameUser,email));
+        userArrayList = new ArrayList<>();
+        userArrayList.add(new User(nameUser,email));
 
-       /* adapterthongtin = new adapterthongtin(this,R.layout.nagivation_thongtin,taiKhoanArrayList);
-        listViewThongTin.setAdapter(adapterthongtin);*/
+        adapterInformation = new AdapterInformation(this,R.layout.nagivation_thongtin,userArrayList);
+        listViewThongTin.setAdapter(adapterInformation);
 
-        boolean isAdmin = false;
-
-        if (i==2) {
-            isAdmin = true;
-        }
+        boolean isAdmin = i == 2;
 
         categoryArrayList = new ArrayList<>();
-        categoryArrayList.add(new Category("Thông Tin", R.drawable.baseline_face_24));
+        categoryArrayList.add(new Category("Thông Tin", R.drawable.ic_person_outline));
         categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
+
         if (isAdmin) {
-            categoryArrayList.add(new Category("Đăng Bài", R.drawable.baseline_post_add_24));
+            categoryArrayList.add(new Category("Đăng Bài", R.drawable.ic_post_add));
             categoryArrayList.add(new Category("Quản lý người dùng", R.drawable.baseline_logout_24));
         }
 
@@ -114,14 +116,15 @@ public class MainActivity extends AppCompatActivity {
 
         ActionBar();
         ActionViewFlipper();
+
         // bat su kien click item
         listViewNew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this,ContentActivity.class);
 
-                String tent = TruyenArraylist.get(position).getNameStory();
-                String noidungt = TruyenArraylist.get(position).getContent();
+                String tent = storyArrayList.get(position).getNameStory();
+                String noidungt = storyArrayList.get(position).getContent();
                 intent.putExtra("tentruyen",tent);
                 intent.putExtra("noidung",noidungt);
                 startActivity(intent);
@@ -170,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
-
             }
         });
     }
@@ -220,13 +222,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // neu click vao icon tim kiem se chuyen sang man hinh tim kiem
-        switch (item.getItemId()){
-            case R.id.menu1:
-                Intent intent = new Intent(MainActivity.this,SearchActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
+        if (item.getItemId() == R.id.menu1) {
+            Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

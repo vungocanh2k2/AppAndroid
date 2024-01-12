@@ -48,26 +48,26 @@ public class AdapterStory extends BaseAdapter{
         }
 
         public static class ViewHolder{
-            TextView txtTenTruyen;
-            ImageView imgtruyen;
+            TextView txtNameStory;
+            ImageView imageStory;
         }
 
         @SuppressLint({"ViewHolder", "InflateParams"})
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder viewHolder = null;
+            ViewHolder viewHolder;
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.item_story,null);
 
-            viewHolder.txtTenTruyen = convertView.findViewById(R.id.textviewTentruyenNew);
-            viewHolder.imgtruyen = convertView.findViewById(R.id.imgNewTruyen);
+            viewHolder.txtNameStory = convertView.findViewById(R.id.textviewTentruyenNew);
+            viewHolder.imageStory = convertView.findViewById(R.id.imgStory);
             convertView.setTag(viewHolder);
 
-            Story truyen =(Story) getItem(position);
-            viewHolder.txtTenTruyen.setText(truyen.getNameStory());
+            Story story = (Story) getItem(position);
+            viewHolder.txtNameStory.setText(story.getNameStory());
 
-            Picasso.get().load(truyen.getImage()).placeholder(R.drawable.ic_load).error(R.drawable.ic_image).into(viewHolder.imgtruyen);
+            Picasso.get().load(story.getImage()).placeholder(R.drawable.ic_load).error(R.drawable.ic_image).into(viewHolder.imageStory);
             return convertView;
         }
     }

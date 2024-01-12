@@ -19,17 +19,17 @@ public class AdapterCategory extends BaseAdapter {
 
     private final Context context;
     private final int layout;
-    private final List<Category> chuyenmucList;
+    private final List<Category> categoryList;
 
-    public AdapterCategory(Context context, int layout, List<Category> chuyenmucList) {
+    public AdapterCategory(Context context, int layout, List<Category> categoryList) {
         this.context = context;
         this.layout = layout;
-        this.chuyenmucList = chuyenmucList;
+        this.categoryList = categoryList;
     }
 
     @Override
     public int getCount() {
-        return chuyenmucList.size();
+        return categoryList.size();
     }
 
     @Override
@@ -53,10 +53,11 @@ public class AdapterCategory extends BaseAdapter {
 
         TextView txt = (TextView) convertView.findViewById(R.id.nameCate);
 
-        Category cm = chuyenmucList.get(position);
+        Category cm = categoryList.get(position);
         txt.setText(cm.getNameCategory());
-        Picasso.get().load(cm.getImageCategory()).placeholder(R.drawable.ic_load).error(R.drawable.ic_image).into(img);
-
+        Picasso.get().load(cm.getImageCategory())
+                .placeholder(R.drawable.ic_load)
+                .error(R.drawable.ic_image).into(img);
 
         return convertView;
     }

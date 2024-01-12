@@ -183,7 +183,7 @@ public class DatabaseStory extends SQLiteOpenHelper {
     }
 
     // lay 3 truyen moi nhat
-    public Cursor getData1(){
+    public Cursor getDataStory(){
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM "+TABLE_STORY+" ORDER BY "+ID_STORY+" DESC LIMIT 4",null);
     }
