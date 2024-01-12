@@ -1,4 +1,4 @@
-package com.example.app_c_truyn.Admin;
+package com.example.app_c_truyn.Admin.Story;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,8 +14,6 @@ import com.example.app_c_truyn.R;
 public class EditStoryActivity extends AppCompatActivity {
 
     private EditText etTitle, etContent, etImage;
-    private Button btnSave;
-
     private DatabaseStory databaseStory;
     private int storyId;
 
@@ -27,7 +25,7 @@ public class EditStoryActivity extends AppCompatActivity {
         etTitle = findViewById(R.id.et_title);
         etContent = findViewById(R.id.et_content);
         etImage = findViewById(R.id.et_image);
-        btnSave = findViewById(R.id.btn_save);
+        Button btnSave = findViewById(R.id.btn_save);
 
         databaseStory = new DatabaseStory(this);
 

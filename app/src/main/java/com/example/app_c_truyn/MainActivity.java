@@ -19,8 +19,8 @@ import android.widget.ListView;
 import android.widget.ViewFlipper;
 import com.example.app_c_truyn.Adapter.AdapterCategory;
 import com.example.app_c_truyn.Adapter.AdapterStory;
-import com.example.app_c_truyn.Admin.AdminActivity;
-import com.example.app_c_truyn.Admin.ListUserActivity;
+import com.example.app_c_truyn.Admin.Story.ListStoryActivity;
+import com.example.app_c_truyn.Admin.User.ListUserActivity;
 import com.example.app_c_truyn.Database.DatabaseStory;
 import com.example.app_c_truyn.Model.Category;
 import com.example.app_c_truyn.Model.Story;
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();//dang xuat
                 }
                 else if(position==2){
-                    Intent intent = new Intent(MainActivity.this, AdminActivity.class);
+                    Intent intent = new Intent(MainActivity.this, ListStoryActivity.class);
                     // gui id tai khoan qua man admin
                     intent.putExtra("Id",idd);
                     startActivity(intent);

@@ -1,4 +1,4 @@
-package com.example.app_c_truyn;
+package com.example.app_c_truyn.Login_Register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.app_c_truyn.Database.DatabaseStory;
+import com.example.app_c_truyn.MainActivity;
+import com.example.app_c_truyn.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,8 +21,6 @@ public class LoginActivity extends AppCompatActivity {
     Button btnDangNhap,btnDangKy;
     //tao doi tuong cho databasedoctruyen
    DatabaseStory db;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                         String email = cursor.getString(3);
                         String tentk = cursor.getString(1);
                         //chuyen qua mainactivity
-                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         //gui du lieu qua activity la mainactivity
                         intent.putExtra("phanq",phanquyen);
                         intent.putExtra("idd",idd);

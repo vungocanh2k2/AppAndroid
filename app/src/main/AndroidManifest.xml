@@ -13,7 +13,7 @@
         android:theme="@style/Theme.App_Đọc_Truyện"
         tools:targetApi="31">
         <activity
-            android:name=".Admin.EditStoryActivity"
+            android:name=".Admin.Story.EditStoryActivity"
             android:exported="false" />
         <activity
             android:name=".InformationActivity"
@@ -25,28 +25,28 @@
             android:name=".ContentActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.ListUserActivity"
+            android:name=".Admin.User.ListUserActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.EditUserActivity"
+            android:name=".Admin.User.EditUserActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.AddUserActivity"
+            android:name=".Admin.User.AddUserActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.AddStoryActivity"
+            android:name=".Admin.Story.AddStoryActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.AdminActivity"
+            android:name=".Admin.Story.ListStoryActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Login_Register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Login_Register.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

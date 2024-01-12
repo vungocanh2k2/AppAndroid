@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.app_c_truyn.Admin.EditUserActivity;
+import com.example.app_c_truyn.Admin.User.EditUserActivity;
 import com.example.app_c_truyn.Database.DatabaseStory;
 import com.example.app_c_truyn.Model.User;
 import com.example.app_c_truyn.R;

@@ -1,5 +1,6 @@
 package com.example.app_c_truyn.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,9 @@ import java.util.List;
 
 public class AdapterCategory extends BaseAdapter {
 
-    private Context context;
-    private int layout;
-    private List<Category> chuyenmucList;
+    private final Context context;
+    private final int layout;
+    private final List<Category> chuyenmucList;
 
     public AdapterCategory(Context context, int layout, List<Category> chuyenmucList) {
         this.context = context;
@@ -41,6 +42,7 @@ public class AdapterCategory extends BaseAdapter {
         return 0;
     }
 
+    @SuppressLint("ViewHolder")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

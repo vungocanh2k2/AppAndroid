@@ -1,4 +1,4 @@
-package com.example.app_c_truyn;
+package com.example.app_c_truyn.Login_Register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,12 +10,12 @@ import android.widget.Toast;
 
 import com.example.app_c_truyn.Database.DatabaseStory;
 import com.example.app_c_truyn.Model.User;
+import com.example.app_c_truyn.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
     EditText edtDKTaiKhoan, edtDKMatKhau, edtDKEmail;
     Button btnDKDangKy, btnDKDangNhap;
-
     DatabaseStory db;
 
     @Override
@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
         db = new DatabaseStory(this);
 
         AnhXa();
+
         btnDKDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,5 +1,6 @@
 package com.example.app_c_truyn.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 
 public class AdapterStory extends BaseAdapter{
-        private Context context;
+        private final Context context;
         private ArrayList<Story> listTruyen;
 
         public AdapterStory(Context context, ArrayList<Story> listTruyen) {
@@ -39,23 +40,25 @@ public class AdapterStory extends BaseAdapter{
         public long getItemId(int position) {
             return position;
         }
+
         // filter
         public void filterList(ArrayList<Story> filteredList) {
             listTruyen = filteredList;
             notifyDataSetChanged();
         }
 
-        public class ViewHolder{
+        public static class ViewHolder{
             TextView txtTenTruyen;
             ImageView imgtruyen;
         }
 
+        @SuppressLint({"ViewHolder", "InflateParams"})
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder viewHolder = null;
             viewHolder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.newtruyen,null);
+            convertView = inflater.inflate(R.layout.item_story,null);
 
             viewHolder.txtTenTruyen = convertView.findViewById(R.id.textviewTentruyenNew);
             viewHolder.imgtruyen = convertView.findViewById(R.id.imgNewTruyen);

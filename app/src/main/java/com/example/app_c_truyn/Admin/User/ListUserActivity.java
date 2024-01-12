@@ -1,4 +1,4 @@
-package com.example.app_c_truyn.Admin;
+package com.example.app_c_truyn.Admin.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,7 +8,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.app_c_truyn.Adapter.AdapterUser;
@@ -21,11 +20,9 @@ import java.util.List;
 
 public class ListUserActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private List<User> userList = new ArrayList<>();
+    private final List<User> userList = new ArrayList<>();
     private AdapterUser userAdapter;
     private DatabaseStory databaseStory;
-    private ImageButton btnAddUser;
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
@@ -33,10 +30,10 @@ public class ListUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_user);
 
-        btnAddUser = findViewById(R.id.buttonAdd);
-
-        recyclerView = findViewById(R.id.recyclerView);
+        ImageButton btnAddUser = findViewById(R.id.buttonAdd);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         userAdapter = new AdapterUser(userList);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(userAdapter);
 
@@ -55,7 +52,7 @@ public class ListUserActivity extends AppCompatActivity {
         btnAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ListUserActivity.this,AddUserActivity.class);
+                Intent intent = new Intent(ListUserActivity.this, AddUserActivity.class);
                 startActivity(intent);
             }
         });

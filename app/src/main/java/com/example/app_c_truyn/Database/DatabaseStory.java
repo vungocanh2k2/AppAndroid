@@ -15,47 +15,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseStory extends SQLiteOpenHelper {
-    private static String DATABASE_NAME = "doctruyen";
-    private static String TABLE_TAIKHOAN = "taikhoan";
-    private static String ID_TAI_KHOAN = "idtaikhoan";
-    private static String TEN_TAI_KHOAN = "tentaikhoan";
-    private static String MAT_KHAU = "matkhau";
-    private static String PHAN_QUYEN = "phanquyen";
-    private static String EMAIL = "email";
-    private static int VERSION = 1;
+    private static final String DATABASE_NAME = "doctruyen";
+    private static final String TABLE_TAIKHOAN = "taikhoan";
+    private static final String ID_TAI_KHOAN = "idtaikhoan";
+    private static final String TEN_TAI_KHOAN = "tentaikhoan";
+    private static final String MAT_KHAU = "matkhau";
+    private static final String PHAN_QUYEN = "phanquyen";
+    private static final String EMAIL = "email";
+    private static final int VERSION = 1;
 
-    private static String TABLE_STORY = "story";
-    private static String ID_STORY = "id_story";
-    private static String NAME_STORY = "title";
-    private static String CONTENT = "content";
-    private static String IMAGE = "image";
+    private static final String TABLE_STORY = "story";
+    private static final String ID_STORY = "id_story";
+    private static final String NAME_STORY = "title";
+    private static final String CONTENT = "content";
+    private static final String IMAGE = "image";
 
     private Context context;
-    private final String CREATE_TABLE_ACCOUNT = "CREATE TABLE "+ TABLE_TAIKHOAN +" ( "+ID_TAI_KHOAN+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-            +TEN_TAI_KHOAN+" TEXT UNIQUE, "
-            +MAT_KHAU+" TEXT, "
-            +EMAIL+" TEXT, "
-            + PHAN_QUYEN+" INTEGER) ";
-    private final String CREATE_TABLE_STORY = "CREATE TABLE "+ TABLE_STORY +" ( "+ID_STORY+" integer primary key AUTOINCREMENT, "
-            +NAME_STORY +" TEXT UNIQUE, "
-            +CONTENT+" TEXT, "
-            +IMAGE+" TEXT, "+ID_TAI_KHOAN+" INTEGER , FOREIGN KEY ( "+ ID_TAI_KHOAN +" ) REFERENCES "+
-            TABLE_TAIKHOAN+"("+ID_TAI_KHOAN+"))";
-    private final String CREATE_ADMIN = "INSERT INTO " + TABLE_TAIKHOAN
-            + " VALUES (null,'admin12','admin12','admin@gmail.com',2)";
 
     public DatabaseStory(@Nullable Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //Tạo bảng user
+        String CREATE_TABLE_ACCOUNT = "CREATE TABLE " + TABLE_TAIKHOAN + " ( " + ID_TAI_KHOAN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + TEN_TAI_KHOAN + " TEXT UNIQUE, "
+                + MAT_KHAU + " TEXT, "
+                + EMAIL + " TEXT, "
+                + PHAN_QUYEN + " INTEGER) ";
         db.execSQL(CREATE_TABLE_ACCOUNT);
+
+        //Tạo tài khoản admin
+        String CREATE_ADMIN = "INSERT INTO " + TABLE_TAIKHOAN
+                + " VALUES (null,'admin12','admin12','admin@gmail.com',2)";
         db.execSQL(CREATE_ADMIN);
+
+        //Tạo bảng truyện
+        String CREATE_TABLE_STORY = "CREATE TABLE " + TABLE_STORY + " ( " + ID_STORY + " integer primary key AUTOINCREMENT, "
+                + NAME_STORY + " TEXT UNIQUE, "
+                + CONTENT + " TEXT, "
+                + IMAGE + " TEXT, " + ID_TAI_KHOAN + " INTEGER , FOREIGN KEY ( " + ID_TAI_KHOAN + " ) REFERENCES " +
+                TABLE_TAIKHOAN + "(" + ID_TAI_KHOAN + "))";
         db.execSQL(CREATE_TABLE_STORY);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TAIKHOAN);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_STORY);
         onCreate(db);
     }
@@ -63,10 +69,10 @@ public class DatabaseStory extends SQLiteOpenHelper {
     // phuong thuc lay tat ca tai khoan
     public Cursor getData(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("SELECT * FROM " +TABLE_TAIKHOAN,null);
-        return res;
+        return db.rawQuery("SELECT * FROM " +TABLE_TAIKHOAN,null);
 
     }
+
     //phuong thuc add tai khoan vao database
     public void AddTaiKhoan(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -103,7 +109,6 @@ public class DatabaseStory extends SQLiteOpenHelper {
             }
             cursor.close();
         }
-
         // Trả về kết quả kiểm tra tài khoản và email
         return tonTai;
     }
@@ -170,6 +175,7 @@ public class DatabaseStory extends SQLiteOpenHelper {
         db.close();
     }
 
+    //Xóa thông tin người dùng
     public void deleteUser(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_TAIKHOAN, ID_TAI_KHOAN + "=?", new String[] { String.valueOf(id) });
@@ -182,13 +188,13 @@ public class DatabaseStory extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM "+TABLE_STORY+" ORDER BY "+ID_STORY+" DESC LIMIT 4",null);
     }
 
-    //Lay tat ca truyen
+    //Lấy tất cả truyện có trong csdl
     public Cursor getAllStory(){
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM "+TABLE_STORY,null);
     }
 
-    //add chuyen
+    //Thêm truyện
     public void AddStory(Story story){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -201,6 +207,8 @@ public class DatabaseStory extends SQLiteOpenHelper {
         db.insert(TABLE_STORY,null,values);
         db.close();
     }
+
+    //Sửa truyện
     public void updateStory(Story story) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -213,7 +221,8 @@ public class DatabaseStory extends SQLiteOpenHelper {
                 new String[]{String.valueOf(story.getID())});
         db.close();
     }
-    //delete truyen
+
+    //Xóa truyện
     public int Delete(int i){
         SQLiteDatabase db = this.getReadableDatabase();
         return db.delete(TABLE_STORY,ID_STORY+" = "+i,null);

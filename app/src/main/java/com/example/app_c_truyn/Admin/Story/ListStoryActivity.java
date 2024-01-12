@@ -1,4 +1,4 @@
-package com.example.app_c_truyn.Admin;
+package com.example.app_c_truyn.Admin.Story;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,7 +20,7 @@ import com.example.app_c_truyn.R;
 
 import java.util.ArrayList;
 
-public class AdminActivity extends AppCompatActivity {
+public class ListStoryActivity extends AppCompatActivity {
 
     ListView listView;
     Button buttonAdd;
@@ -48,7 +48,7 @@ public class AdminActivity extends AppCompatActivity {
                 int id = intent1.getIntExtra("Id", 0);
 
                 // Pass the ID to the AddStoryActivity
-                Intent intent = new Intent(AdminActivity.this, AddStoryActivity.class);
+                Intent intent = new Intent(ListStoryActivity.this, AddStoryActivity.class);
                 intent.putExtra("Id", id);
                 startActivity(intent);
             }
@@ -78,7 +78,7 @@ public class AdminActivity extends AppCompatActivity {
                 int storyId = storyArrayList.get(position).getID();
 
                 // Pass the story ID to the EditStoryActivity
-                Intent intent = new Intent(AdminActivity.this, EditStoryActivity.class);
+                Intent intent = new Intent(ListStoryActivity.this, EditStoryActivity.class);
                 intent.putExtra("story_id", storyId);
                 startActivity(intent);
 
@@ -111,11 +111,11 @@ public class AdminActivity extends AppCompatActivity {
                 int storyId = storyArrayList.get(position).getID();
                 databaseStory.Delete(storyId);
 
-                Intent intent = new Intent(AdminActivity.this, AdminActivity.class);
+                Intent intent = new Intent(ListStoryActivity.this, ListStoryActivity.class);
                 finish();
                 startActivity(intent);
 
-                Toast.makeText(AdminActivity.this, "Xóa truyện thành công", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListStoryActivity.this, "Xóa truyện thành công", Toast.LENGTH_SHORT).show();
 
                 dialog.dismiss();
             }

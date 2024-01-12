@@ -1,4 +1,4 @@
-package com.example.app_c_truyn.Admin;
+package com.example.app_c_truyn.Admin.Story;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -49,7 +49,7 @@ public class AddStoryActivity extends AppCompatActivity {
                 else {
                     databaseStory.AddStory(story);
 
-                    Intent intent = new Intent(AddStoryActivity.this,AdminActivity.class);
+                    Intent intent = new Intent(AddStoryActivity.this, ListStoryActivity.class);
                     startActivity(intent);
 
                 }
@@ -62,17 +62,14 @@ public class AddStoryActivity extends AppCompatActivity {
 
     // phuong thuc tao truyen
     private Story CreateStory(){
-        String tentruyen = edtTenTruyen.getText().toString();
-        String noidung = edtNoiDung.getText().toString();
-        String img = edtAnh.getText().toString();
+        String nameStory = edtTenTruyen.getText().toString();
+        String Content = edtNoiDung.getText().toString();
+        String image = edtAnh.getText().toString();
 
         Intent intent = getIntent();
 
         int id = intent.getIntExtra("Id",0);
 
-        Story story = new Story();
-
-        return story;
-
+        return new Story();
     }
 }

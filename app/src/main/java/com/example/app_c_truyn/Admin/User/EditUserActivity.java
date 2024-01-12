@@ -1,4 +1,4 @@
-package com.example.app_c_truyn.Admin;
+package com.example.app_c_truyn.Admin.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +17,6 @@ public class EditUserActivity extends AppCompatActivity {
     private EditText edtUsername;
     private EditText edtPassword;
     private EditText edtEmail;
-
     private User user;
     private DatabaseStory db;
 
