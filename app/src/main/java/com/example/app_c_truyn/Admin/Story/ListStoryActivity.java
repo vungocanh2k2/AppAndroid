@@ -10,11 +10,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.app_c_truyn.Adapter.AdapterStory;
+import com.example.app_c_truyn.Admin.User.AddUserActivity;
+import com.example.app_c_truyn.Admin.User.ListUserActivity;
 import com.example.app_c_truyn.Database.DatabaseStory;
+import com.example.app_c_truyn.MainActivity;
 import com.example.app_c_truyn.Model.Story;
 import com.example.app_c_truyn.R;
 
@@ -24,6 +28,7 @@ public class ListStoryActivity extends AppCompatActivity {
 
     ListView listView;
     Button buttonAdd;
+    ImageButton btnBack;
     ArrayList<Story> storyArrayList;
     AdapterStory adapterStory;
     DatabaseStory databaseStory;
@@ -37,8 +42,16 @@ public class ListStoryActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.listviewAdmin);
         buttonAdd = findViewById(R.id.buttonThemtruyen);
+        btnBack = findViewById(R.id.backListStory);
 
         initList();
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               finish();
+            }
+        });
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,8 +115,8 @@ public class ListStoryActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.dialogdelete);
         dialog.setCanceledOnTouchOutside(false);
 
-        Button btnYes = dialog.findViewById(R.id.btn_save);
-        Button btnNo = dialog.findViewById(R.id.btn_cancel);
+        Button btnYes = dialog.findViewById(R.id.buttonYes);
+        Button btnNo = dialog.findViewById(R.id.buttonNo);
 
         btnYes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,12 +151,12 @@ public class ListStoryActivity extends AppCompatActivity {
         Cursor cursor1 = databaseStory.getAllStory();
         while (cursor1.moveToNext()) {
             int id = cursor1.getInt(0);
-            String tentruyen = cursor1.getString(1);
-            String noidung = cursor1.getString(2);
-            String anh = cursor1.getString(3);
+            String nameStory = cursor1.getString(1);
+            String content = cursor1.getString(2);
+            String image = cursor1.getString(3);
             int id_tk = cursor1.getInt(4);
 
-            storyArrayList.add(new Story(id, tentruyen, noidung, anh, id_tk));
+            storyArrayList.add(new Story(id, nameStory, content, image, id_tk));
         }
         cursor1.close();
 

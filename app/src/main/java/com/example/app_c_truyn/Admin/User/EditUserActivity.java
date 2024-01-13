@@ -2,10 +2,13 @@ package com.example.app_c_truyn.Admin.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.app_c_truyn.Database.DatabaseStory;
@@ -20,6 +23,7 @@ public class EditUserActivity extends AppCompatActivity {
     private User user;
     private DatabaseStory db;
 
+    @SuppressLint({"MissingInflatedId", "LocalSuppress"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +33,7 @@ public class EditUserActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edt_password);
         edtEmail = findViewById(R.id.edt_email);
         Button btnSaveChanges = findViewById(R.id.btn_save);
-        Button btnCancel = findViewById(R.id.btn_cancel);
+        ImageButton btnCancel = findViewById(R.id.backContent);
 
         db = new DatabaseStory(this);
 

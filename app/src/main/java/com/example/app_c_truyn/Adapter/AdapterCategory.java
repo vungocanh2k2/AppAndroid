@@ -49,9 +49,9 @@ public class AdapterCategory extends BaseAdapter {
 
         convertView = inflater.inflate(layout,null);
 
-        ImageView img = (ImageView) convertView.findViewById(R.id.imgCate);
+        ImageView img =  convertView.findViewById(R.id.imgCate);
 
-        TextView txt = (TextView) convertView.findViewById(R.id.nameCate);
+        TextView txt =  convertView.findViewById(R.id.nameCate);
 
         Category cm = categoryList.get(position);
         txt.setText(cm.getNameCategory());

@@ -44,19 +44,20 @@ public class EditStoryActivity extends AppCompatActivity {
 
         btnSave.setOnClickListener(view -> {
             // Lấy thông tin từ EditText
-            String title = etTitle.getText().toString();
-            String content = etContent.getText().toString();
+            String nameStory = etTitle.getText().toString();
+            String Content = etContent.getText().toString();
             String image = etImage.getText().toString();
 
             // Kiểm tra xem các trường dữ liệu có rỗng hay không
-            if (title.isEmpty() || content.isEmpty() || image.isEmpty()) {
+            if (nameStory.isEmpty() || Content.isEmpty() || image.isEmpty()) {
                 Toast.makeText(EditStoryActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             } else {
                 // Tạo một đối tượng Story mới
-                Story updatedStory = new Story();
+                int id = 0;
+                Story updatedStory = new Story(nameStory, Content, image, id);
                 updatedStory.setID(storyId);
-                updatedStory.setNameStory(title);
-                updatedStory.setContent(content);
+                updatedStory.setNameStory(nameStory);
+                updatedStory.setContent(Content);
                 updatedStory.setImage(image);
 
                 // Cập nhật truyện trong cơ sở dữ liệu

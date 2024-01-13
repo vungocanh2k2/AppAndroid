@@ -15,6 +15,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class AdapterStory extends BaseAdapter{
         private final Context context;
@@ -49,7 +51,7 @@ public class AdapterStory extends BaseAdapter{
 
         public static class ViewHolder{
             TextView txtNameStory;
-            ImageView imageStory;
+            CircleImageView imageStory;
         }
 
         @SuppressLint({"ViewHolder", "InflateParams"})
@@ -67,7 +69,8 @@ public class AdapterStory extends BaseAdapter{
             Story story = (Story) getItem(position);
             viewHolder.txtNameStory.setText(story.getNameStory());
 
-            Picasso.get().load(story.getImage()).placeholder(R.drawable.ic_load).error(R.drawable.ic_image).into(viewHolder.imageStory);
+            Picasso.get().load(story.getImage()).placeholder(R.drawable.ic_load)
+                    .error(R.drawable.ic_image).into(viewHolder.imageStory);
             return convertView;
         }
     }

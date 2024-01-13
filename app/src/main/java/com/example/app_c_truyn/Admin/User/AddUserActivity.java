@@ -3,6 +3,7 @@ package com.example.app_c_truyn.Admin.User;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -68,8 +69,8 @@ public class AddUserActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Kết thúc activity mà không lưu lại thông tin
-                finish();
+                Intent intent = new Intent(AddUserActivity.this,ListUserActivity.class);
+                startActivity(intent);
             }
         });
     }

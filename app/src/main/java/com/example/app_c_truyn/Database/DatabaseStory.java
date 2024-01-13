@@ -35,6 +35,7 @@ public class DatabaseStory extends SQLiteOpenHelper {
     public DatabaseStory(@Nullable Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Tạo bảng user
@@ -57,9 +58,8 @@ public class DatabaseStory extends SQLiteOpenHelper {
                 + IMAGE + " TEXT, " + ID_TAI_KHOAN + " INTEGER , FOREIGN KEY ( " + ID_TAI_KHOAN + " ) REFERENCES " +
                 TABLE_TAIKHOAN + "(" + ID_TAI_KHOAN + "))";
         db.execSQL(CREATE_TABLE_STORY);
-        String SQLQuery2 = "INSERT INTO TaiKhoan VAlUES (null,'admin','admin','admin@gmail.com',2)";
-        String SQLQuery3 = "INSERT INTO TaiKhoan VAlUES (null,'ducduc','1234567','duc@gmail.com',2)";
-        String SQLQuery4 = "INSERT INTO truyen VALUES (null,'Hai quan đấy!','Lão quan nọ có tính nịnh vợ. Lão ra lệnh hễ ai gặp cũng phải chào: “Lạy hai quan ạ!”.\n" +
+
+        String SQLQuery4 = "INSERT INTO story VALUES (null,'Hai quan đấy!','Lão quan nọ có tính nịnh vợ. Lão ra lệnh hễ ai gặp cũng phải chào: “Lạy hai quan ạ!”.\n" +
                 "\n" +
                 "Có chú bé giả vờ hoàn toàn chẳng hay gì về cái lệnh ấy. Thấy vợ quan đi cạnh quan, chú bế chó, đi sát vào.\n" +
                 "\n" +
@@ -74,7 +74,8 @@ public class DatabaseStory extends SQLiteOpenHelper {
                 "Chú chỉ vào chó:\n" +
                 "\n" +
                 "– Dạ bẩm, chó hai quan, chó đáng giá hai quan, thật đấy ạ!.','https://truyendangian.com/wp-content/uploads/2023/06/hai-quan-day.jpg',1)";
-        String SQLQuery5 = "INSERT INTO truyen VALUES (null,'Cậu bé Chu Minh','Người dân vùng sông Mã ở Thanh Hóa vẫn còn kể cho nhau nghe câu chuyện về một cậu bé thời xưa. Tên cậu là Chu Minh. Cậu có tài lặn dưới nước như rái cá.\n" +
+        db.execSQL(SQLQuery4);
+        String SQLQuery5 = "INSERT INTO story VALUES (null,'Cậu bé Chu Minh','Người dân vùng sông Mã ở Thanh Hóa vẫn còn kể cho nhau nghe câu chuyện về một cậu bé thời xưa. Tên cậu là Chu Minh. Cậu có tài lặn dưới nước như rái cá.\n" +
                 "\n" +
                 "Vào thời nhà Hán đô hộ nước ta, thái thú [1] quận Cửu Chân [2] tên là Nghê Thức vô cùng tàn ác, bị người người căm ghét. Một nông dân tên là Chu Đạt đã dìm chết Nghê Thức trên dòng sông Mã. Về sau, bọn quan quân nhà Hán tạc tượng Nghê Thức và lập đền thờ trên bờ sông.\n" +
                 "\n" +
@@ -89,7 +90,8 @@ public class DatabaseStory extends SQLiteOpenHelper {
                 "Nghê Thức gỗ bị đeo đá chìm nghỉm, Minh còn lặn vài hơi xem thử pho tượng đã chìm tới đáy chưa.\n" +
                 "\n" +
                 "Sẵn lòng yêu nước và căm thù giặc, ít lâu sau, Chu Minh tham gia nghĩa quân, trở thành người tùy tùng tin cậy của Bà Triệu [3]. Cậu nghĩa quân tí hon ấy có gương trán cao, một chỏm tóc trên đỉnh đầu. Cậu thường mặc chiếc áo da chồn, lại đeo bên hông một bao tên và khoác một cây cung như một anh chàng đi săn ở rừng. Trong nghĩa quân, ai cũng biết câu chuyện Chu Minh đã từng thủy chiến với Nghê Thức gỗ.','https://truyendangian.com/wp-content/uploads/2023/05/cau-be-chu-minh.jpg',1)";
-        String SQLQuery6 = "INSERT INTO truyen VALUES (null,'Truyền thuyết về Hồ Gươm','Vào thời giặc Minh đặt ách đô hộ [1] ở nư\u00ADớc Nam, chúng coi dân ta như cỏ rác, làm nhiều điều bạo ngược, thiên hạ căm giận chúng đến xương tủy. Bấy giờ ở vùng Lam Sơn, nghĩa quân nổi dậy chống lại chúng, nhưng trong buổi đầu thế lực còn non yếu nên nhiều lần nghĩa quân bị thua. Thấy vậy, đức Long Quân [2] quyết định cho nghĩa quân mượn thanh gươm thần để họ giết giặc.\n" +
+        db.execSQL(SQLQuery5);
+        String SQLQuery6 = "INSERT INTO story VALUES (null,'Truyền thuyết về Hồ Gươm','Vào thời giặc Minh đặt ách đô hộ [1] ở nư\u00ADớc Nam, chúng coi dân ta như cỏ rác, làm nhiều điều bạo ngược, thiên hạ căm giận chúng đến xương tủy. Bấy giờ ở vùng Lam Sơn, nghĩa quân nổi dậy chống lại chúng, nhưng trong buổi đầu thế lực còn non yếu nên nhiều lần nghĩa quân bị thua. Thấy vậy, đức Long Quân [2] quyết định cho nghĩa quân mượn thanh gươm thần để họ giết giặc.\n" +
                 "\n" +
                 "Hồi ấy, ở Thanh Hóa có một người làm nghề đánh cá tên là Lê Thận. Một đêm nọ, Thận thả lưới ở một bến vắng như\u00AD thường lệ. Khi kéo lưới lên, chàng thấy nằng nặng, trong bụng mừng thầm, chắc là có cá to. Nhưng khi thò tay vào bắt cá, Thận chỉ thấy có một thanh sắt; chàng vứt luôn xuống nư\u00ADớc, rồi lại thả lưới ở một chỗ khác.\n" +
                 "\n" +
@@ -114,7 +116,9 @@ public class DatabaseStory extends SQLiteOpenHelper {
                 "Vua rút g\u00ADươm quẳng về phía rùa vàng. Nhanh như\u00AD cắt, rùa há miệng đớp lấy thanh gư\u00ADơm và lặn xuống nư\u00ADớc. G\u00ADươm và rùa đã chìm đáy n\u00ADước, ngư\u00ADời ta vẫn còn thấy vật gì sáng le lói d\u00ADưới mặt hồ xanh.\n" +
                 "\n" +
                 "Từ đó hồ Tả Vọng bắt đầu mang tên là Hồ G\u00ADươm hay hồ Hoàn Kiếm.','https://truyendangian.com/wp-content/uploads/2023/05/truyen-thuyet-ve-ho-guom.jpg',1)";
-        String SQLQuery7 = "INSERT INTO truyen VALUES (null,'Dân dần quan','Có hai anh lính hầu hạ quan lâu ngày, thấy quan đã ác lại hay ăn tiền, ai có việc vào cửa quan là y như bị đánh đập tàn tệ, đến lúc xì tiền ra mới thôi.\n" +"\n" +
+        db.execSQL(SQLQuery6);
+        String SQLQuery7 = "INSERT INTO  story VALUES (null,'Dân dần quan','Có hai anh lính hầu hạ quan lâu ngày, thấy quan đã ác lại hay ăn tiền, ai có việc vào cửa quan là y như bị đánh đập tàn tệ, đến lúc xì tiền ra mới thôi.\n" +
+                "\n" +
                 "Một hôm, rỗi rãi, hai anh ngồi kháo chuyện với nhau nói xấc quan. Một anh bảo:\n" +
                 "\n" +
                 "– Ác thế thì có ngày dân nó quật lại cho mà xem.\n" +
@@ -131,30 +135,7 @@ public class DatabaseStory extends SQLiteOpenHelper {
                 "Anh kia nói chữa:\n" +
                 "\n" +
                 "– Bẩm quan, con bảo: Quan quản dân, dân… cần quan. Không có quan thì ai cai trị dân.','https://truyendangian.com/wp-content/uploads/2023/01/dan-dan-quan.jpg',1)";
-        String SQLQuery8 = "INSERT INTO truyen VALUES (null,'Thuần phục sư tử','Ha-li-ma lấy chồng được hai năm. Trước khi cưới, chồng nàng là một người dễ mến, lúc nào cũng tươi cười. Vậy mà giờ đây, chỉ thấy chàng cau có, gắt gỏng. Không biết làm thế nào, Ha-li-ma đến nhờ vị giáo sĩ [1] già trong vùng giúp đỡ.\n" +
-                "\n" +
-                "Vị giáo sĩ râu tóc bạc phơ nhìn vào mắt Ha-li-ma hồi lâu, rồi bảo:\n" +
-                "\n" +
-                "– Nếu con đem được ba sợi lông bờm của một con sư tử sống về đây, ta sẽ nói cho con bí quyết [2].\n" +
-                "\n" +
-                "Nghe vậy, Ha-li-ma sợ toát mồ hôi. Nàng trở về, vừa đi vừa khóc.\n" +
-                "\n" +
-                "Nhưng mong muốn hạnh phúc đã giúp nàng tìm ra cách làm quen với chúa sơn lâm. Tối đến, nàng ôm một con cừu non vào rừng. Thấy có mồi, sư tử gầm lên một tiếng, nhảy bổ tới. Ha-li-ma cũng hét lên khiếp đảm rồi ném con cừu xuống đất.\n" +
-                "\n" +
-                "Mấy ngày liền, tối nào cũng được ăn món thịt cừu ngon lành trong tay Ha-li-ma, sư tử dần dần đổi tính. Nó quen với nàng, có hôm còn nằm cho nàng chải bộ lông bờm sau gáy.\n" +
-                "\n" +
-                "Một tối, khi sư tử đã no nê, nằm bên chân Ha-li-ma ngoan ngoãn như một con mèo lớn, Ha-li-ma khấn Đức A-la [3] che chở cho nàng, rồi lén nhổ ba sợi lông bờm của nó. Con vật giật mình, chồm dậy. Nhưng bắt gặp ánh mắt dịu hiền của nàng, nó cụp mắt xuống, rồi lẳng lặng bỏ đi.\n" +
-                "\n" +
-                "Ha-li-ma chạy ngay tới nhà giáo sĩ. Cụ già mỉm cười:\n" +
-                "\n" +
-                "– Chỉ trong ít ngày, bằng trí thông minh, lòng kiên nhẫn và cử chỉ dịu dàng, con đã thuần phục [4] được một con sư tử hung dữ. Lẽ nào con không làm mềm lòng nổi một người đàn ông vốn yếu đuối hơn sư tử rất nhiều? Con đã nắm được bí quyết rồi đấy.','https://truyendangian.com/wp-content/uploads/2022/12/thuan-phuc-su-tu.jpg',1)";
-        db.execSQL(SQLQuery2);
-        db.execSQL(SQLQuery3);
-        db.execSQL(SQLQuery4);
-        db.execSQL(SQLQuery5);
-        db.execSQL(SQLQuery6);
         db.execSQL(SQLQuery7);
-        db.execSQL(SQLQuery8);
     }
 
 

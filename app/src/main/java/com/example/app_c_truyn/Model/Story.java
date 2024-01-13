@@ -7,13 +7,23 @@ public class Story {
     private String Image;
     private int ID_TK;
 
-    public Story() {}
+
+    public Story(String nameStory, String content, String image, int ID_TK) {
+        NameStory = nameStory;
+        Content = content;
+        Image = image;
+        this.ID_TK = ID_TK;
+    }
+
     public Story(int ID, String nameStory, String content, String image, int ID_TK) {
         this.ID = ID;
         NameStory = nameStory;
         Content = content;
         Image = image;
         this.ID_TK = ID_TK;}
+
+   /* public Story(String nameStory, String content, String image, int id) {
+    }*/
 
 
     public int getID() {

@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
 
         if (isAdmin) {
-            categoryArrayList.add(new Category("Đăng Bài", R.drawable.ic_post_add));
+            categoryArrayList.add(new Category("Quản lý truyện", R.drawable.ic_post_add));
             categoryArrayList.add(new Category("Quản lý người dùng", R.drawable.baseline_logout_24));
         }
 
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // bat clickitem cho listview
+        // bat click item cho listview
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
