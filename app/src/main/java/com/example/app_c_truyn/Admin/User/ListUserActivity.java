@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.app_c_truyn.Adapter.AdapterUser;
@@ -30,7 +31,7 @@ public class ListUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_user);
 
-        ImageButton btnAddUser = findViewById(R.id.buttonAdd);
+        Button btnAddUser = findViewById(R.id.buttonAdd);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         userAdapter = new AdapterUser(userList);
 

@@ -1,22 +1,43 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
     tools:context=".Admin.Story.ListStoryActivity">
 
-    <Button
-        android:layout_gravity="center"
-        android:id="@+id/buttonThemtruyen"
-        android:text="Add Story"
-        android:background="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <ListView
-        android:id="@+id/listviewAdmin"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/backListStory"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_arrow_back_24" />
+
+            <Button
+                android:id="@+id/buttonThemtruyen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="5dp"
+                android:background="@drawable/shape_button"
+                android:text="Thêm truyện"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listviewAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+    </LinearLayout>
+</RelativeLayout>

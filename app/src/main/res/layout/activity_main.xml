@@ -5,40 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.appcompat.widget.Toolbar
-                android:background="#FFFFFF"
-                app:titleTextColor="#000000"
-                android:id="@+id/toolbarmanhinhchinh"
-                app:title="Danh sách truyện "
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarmanhinhchinh"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
-            <ViewFlipper
+                android:layout_height="?attr/actionBarSize"
                 android:background="#FFFFFF"
+                app:title="Danh sách truyện "
+                app:titleTextColor="#000000" />
+
+            <ViewFlipper
                 android:id="@+id/viewflipper"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"></ViewFlipper>
+                android:layout_height="150dp"
+                android:background="#FFFFFF" />
+
             <LinearLayout
-                android:background="#FFFFFF"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:orientation="vertical">
+
                 <TextView
-                    android:textColor="#F44336"
-                    android:textStyle="bold"
-                    android:textSize="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Mới Nhất"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></TextView>
+                    android:textColor="#F44336"
+                    android:textSize="25dp"
+                    android:textStyle="bold"/>
 
                 <ListView
                     android:id="@+id/listviewNew"
@@ -49,22 +54,23 @@
                 </ListView>
             </LinearLayout>
         </LinearLayout>
+
         <com.google.android.material.navigation.NavigationView
-            android:layout_gravity="start"
             android:id="@+id/navigatationView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="start">
+
             <ListView
                 android:id="@+id/listviewthongtin"
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="150dp"/>
 
-            </ListView>
             <ListView
                 android:id="@+id/listviewmanhinhchinh"
-                android:layout_marginTop="150dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="150dp"/>
         </com.google.android.material.navigation.NavigationView>
 
     </androidx.drawerlayout.widget.DrawerLayout>
