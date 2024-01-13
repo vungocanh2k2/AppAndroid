@@ -20,8 +20,8 @@ public class ContentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_content);
 
         //Ánh xạ
-        txtContent = findViewById(R.id.content);
-        txtName = findViewById(R.id.nameStory);
+        txtContent = findViewById(R.id.noidung);
+        txtName = findViewById(R.id.TenTruyen);
 
         //lay du lieu
         Intent intent = getIntent();
