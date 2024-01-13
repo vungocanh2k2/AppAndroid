@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.app_c_truyn.Database.DatabaseStory;
@@ -15,7 +16,8 @@ import com.example.app_c_truyn.R;
 public class RegisterActivity extends AppCompatActivity {
 
     EditText edtDKTaiKhoan, edtDKMatKhau, edtDKEmail;
-    Button btnDKDangKy, btnDKDangNhap;
+    Button btnDKDangKy;
+    ImageButton  btnDKDangNhap;
     DatabaseStory db;
 
     @Override

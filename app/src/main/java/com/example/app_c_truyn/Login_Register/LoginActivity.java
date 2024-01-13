@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.app_c_truyn.Database.DatabaseStory;
@@ -18,7 +19,8 @@ public class LoginActivity extends AppCompatActivity {
 
     //tao bien cho man dang nhap
     EditText edtTaiKhoan,edtMatKhau;
-    Button btnDangNhap,btnDangKy;
+    Button btnDangNhap;
+    TextView btnDangKy;
     //tao doi tuong cho databasedoctruyen
    DatabaseStory db;
 
