@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App_Đọc_Truyện</string>
+    <string name="app_name">DRS</string>
     <string name="name">Email</string>
     <string name="username">Tên Tài Khoản</string>
     <string name="password">Mật Khẩu</string>
@@ -7,5 +7,5 @@
     <string name="register">Đăng Kí </string>
     <string name="exit">Thoát</string>
     <string name="login">Đăng Nhập </string>
-    <string name="dangki">Bạn chưa có tài khoản, Đăng ký? </string>
+    <string name="dangki">Bạn chưa có tài khoản, <b>Đăng ký?</b> </string>
 </resources>

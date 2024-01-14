@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.app_c_truyn.Model.Category;
 import com.example.app_c_truyn.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -47,17 +46,14 @@ public class AdapterCategory extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        convertView = inflater.inflate(layout,null);
+        convertView = inflater.inflate(layout, null);
 
-        ImageView img =  convertView.findViewById(R.id.imgCate);
-
-        TextView txt =  convertView.findViewById(R.id.nameCate);
+        ImageView img = convertView.findViewById(R.id.imgCate);
+        TextView txt = convertView.findViewById(R.id.nameCate);
 
         Category cm = categoryList.get(position);
         txt.setText(cm.getNameCategory());
-        Picasso.get().load(cm.getImageCategory())
-                .placeholder(R.drawable.ic_load)
-                .error(R.drawable.ic_image).into(img);
+        img.setImageResource(cm.getImageCategory());
 
         return convertView;
     }

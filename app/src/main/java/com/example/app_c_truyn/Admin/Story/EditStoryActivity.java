@@ -33,7 +33,7 @@ public class EditStoryActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             storyId = bundle.getInt("story_id");
-            String title = bundle.getString("title");
+            String title = bundle.getString("nameStory");
             String content = bundle.getString("content");
             String image = bundle.getString("image");
 
@@ -42,29 +42,32 @@ public class EditStoryActivity extends AppCompatActivity {
             etImage.setText(image);
         }
 
+
         btnSave.setOnClickListener(view -> {
             // Lấy thông tin từ EditText
             String nameStory = etTitle.getText().toString();
-            String Content = etContent.getText().toString();
+            String content = etContent.getText().toString();
             String image = etImage.getText().toString();
 
             // Kiểm tra xem các trường dữ liệu có rỗng hay không
-            if (nameStory.isEmpty() || Content.isEmpty() || image.isEmpty()) {
+            if (nameStory.isEmpty() || content.isEmpty() || image.isEmpty()) {
                 Toast.makeText(EditStoryActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             } else {
                 // Tạo một đối tượng Story mới
-                int id = 0;
-                Story updatedStory = new Story(nameStory, Content, image, id);
+                Story updatedStory = new Story(nameStory, content, image, 0);
                 updatedStory.setID(storyId);
                 updatedStory.setNameStory(nameStory);
-                updatedStory.setContent(Content);
+                updatedStory.setContent(content);
                 updatedStory.setImage(image);
 
                 // Cập nhật truyện trong cơ sở dữ liệu
-                databaseStory.updateStory(updatedStory);
-
-                Toast.makeText(EditStoryActivity.this, "Cập nhật truyện thành công", Toast.LENGTH_SHORT).show();
-                finish(); // Kết thúc activity và quay trở lại màn hình trước đó
+                if (databaseStory.updateStory(updatedStory)) {
+                    Toast.makeText(EditStoryActivity.this, "Cập nhật truyện thành công", Toast.LENGTH_SHORT).show();
+                    finish(); // Kết thúc activity và quay trở lại màn hình trước đó
+                } else {
+                    // Handle the case where the update operation fails
+                    Toast.makeText(EditStoryActivity.this, "Error: Unable to update story", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -25,12 +25,13 @@ public class ListUserActivity extends AppCompatActivity {
     private AdapterUser userAdapter;
     private DatabaseStory databaseStory;
 
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint({"NotifyDataSetChanged", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_user);
 
+        ImageButton backBtn = findViewById(R.id.backListUser);
         Button btnAddUser = findViewById(R.id.buttonAdd);
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         userAdapter = new AdapterUser(userList);
@@ -55,6 +56,12 @@ public class ListUserActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ListUserActivity.this, AddUserActivity.class);
                 startActivity(intent);
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

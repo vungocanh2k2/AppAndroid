@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="@drawable/shape_button"
     android:padding="16dp">
 
     <TextView
@@ -11,6 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -19,6 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <TextView
@@ -26,12 +29,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <ImageButton
         android:id="@+id/buttonEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/shape_button"
         android:src="@android:drawable/ic_menu_edit"
         tools:ignore="ContentDescription"/>
 
@@ -39,6 +46,8 @@
         android:id="@+id/buttonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/shape_button"
+        android:layout_gravity="center"
         android:src="@android:drawable/ic_menu_delete"
         tools:ignore="ContentDescription" />
 

@@ -7,6 +7,7 @@ public class Story {
     private String Image;
     private int ID_TK;
 
+    public Story() {}
 
     public Story(String nameStory, String content, String image, int ID_TK) {
         NameStory = nameStory;
@@ -20,11 +21,8 @@ public class Story {
         NameStory = nameStory;
         Content = content;
         Image = image;
-        this.ID_TK = ID_TK;}
-
-   /* public Story(String nameStory, String content, String image, int id) {
-    }*/
-
+        this.ID_TK = ID_TK;
+    }
 
     public int getID() {
         return ID;

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -29,7 +31,6 @@ import com.example.app_c_truyn.Model.User;
 import com.squareup.picasso.Picasso;
 import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -96,22 +97,22 @@ public class MainActivity extends AppCompatActivity {
         userArrayList = new ArrayList<>();
         userArrayList.add(new User(nameUser,email));
 
-        adapterInformation = new AdapterInformation(this,R.layout.nagivation_thongtin,userArrayList);
+        adapterInformation = new AdapterInformation(this,R.layout.item_nagivation,userArrayList);
         listViewThongTin.setAdapter(adapterInformation);
 
         boolean isAdmin = i == 2;
 
         categoryArrayList = new ArrayList<>();
-        categoryArrayList.add(new Category("Thông Tin", R.drawable.ic_person_outline));
+        categoryArrayList.add(new Category("Thông Tin App", R.drawable.baseline_info_24));
         categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
 
         if (isAdmin) {
             categoryArrayList.add(new Category("Quản lý truyện", R.drawable.ic_post_add));
-            categoryArrayList.add(new Category("Quản lý người dùng", R.drawable.baseline_logout_24));
+            categoryArrayList.add(new Category("Quản lý người dùng", R.drawable.baseline_manage_accounts_24));
         }
 
         // Tạo adapter cho danh sách chuyên mục
-        adapterCategory = new AdapterCategory(this,R.layout.category,categoryArrayList);
+        adapterCategory = new AdapterCategory(this,R.layout.item_category,categoryArrayList);
         listView.setAdapter(adapterCategory);
 
         ActionBar();
@@ -123,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this,ContentActivity.class);
 
-                String tent = storyArrayList.get(position).getNameStory();
-                String noidungt = storyArrayList.get(position).getContent();
-                intent.putExtra("tentruyen",tent);
-                intent.putExtra("noidung",noidungt);
+                String nameStory = storyArrayList.get(position).getNameStory();
+                String content = storyArrayList.get(position).getContent();
+                intent.putExtra("tentruyen",nameStory);
+                intent.putExtra("noidung",content);
                 startActivity(intent);
 
             }
@@ -161,14 +162,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Thanh actionbar với Toolbar
     private void ActionBar() {
         // ham ho tro toolbar
         setSupportActionBar(toolbar);
-        // set nut cho actiocbar
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        // set nut cho actionbar
+       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // tao icon cho toolbar
         toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
 
+        // Bắt sự kiện click
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -212,13 +215,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    //Nạp một menu tìm kiếm vào Actionbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mymenu,menu);
         return true;
-
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // neu click vao icon tim kiem se chuyen sang man hinh tim kiem
@@ -226,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, SearchActivity.class);
             startActivity(intent);
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

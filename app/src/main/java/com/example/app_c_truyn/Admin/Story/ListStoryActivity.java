@@ -92,9 +92,9 @@ public class ListStoryActivity extends AppCompatActivity {
 
                 // Pass the story ID to the EditStoryActivity
                 Intent intent = new Intent(ListStoryActivity.this, EditStoryActivity.class);
+                // In ListStoryActivity
                 intent.putExtra("story_id", storyId);
                 startActivity(intent);
-
                 dialog.dismiss();
             }
         });
@@ -106,13 +106,13 @@ public class ListStoryActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
         dialog.show();
     }
 
     private void showDeleteConfirmationDialog(int position) {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialogdelete);
+
         dialog.setCanceledOnTouchOutside(false);
 
         Button btnYes = dialog.findViewById(R.id.buttonYes);

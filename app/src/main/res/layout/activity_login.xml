@@ -8,12 +8,11 @@
     android:orientation="vertical"
     tools:context=".Login_Register.LoginActivity">
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="@string/login"
         android:textColor="@color/white"
@@ -29,7 +28,9 @@
         android:drawableLeft="@drawable/baseline_person_24"
         android:drawablePadding="10dp"
         android:hint="@string/username"
+        android:layout_marginBottom="10dp"
         android:padding="15dp"
+        android:textColor="@color/white"
         android:textColorHint="@color/cray" />
 
     <EditText
@@ -42,6 +43,8 @@
         android:drawablePadding="10dp"
         android:hint="@string/password"
         android:padding="15dp"
+        android:textColor="@color/white"
+        android:inputType="textPassword"
         android:textColorHint="@color/cray" />
 
     <Button
@@ -49,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/shape_button"
         android:text="@string/login"
         android:textSize="30dp" />

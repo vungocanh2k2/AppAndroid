@@ -30,6 +30,7 @@ public class ContentActivity extends AppCompatActivity {
 
         txtName.setText(nameStory);
         txtContent.setText(content);
+
         // cho phep cuon noi dung truyen
         txtContent.setMovementMethod(new ScrollingMovementMethod());
 
