@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class ContentActivity extends AppCompatActivity {
@@ -22,6 +23,15 @@ public class ContentActivity extends AppCompatActivity {
         //Ánh xạ
         txtContent = findViewById(R.id.noidung);
         txtName = findViewById(R.id.TenTruyen);
+
+        ImageButton backBtn = findViewById(R.id.backContent);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //lay du lieu
         Intent intent = getIntent();

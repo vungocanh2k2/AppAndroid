@@ -1,15 +1,18 @@
 package com.example.app_c_truyn.Login_Register;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app_c_truyn.Database.DatabaseStory;
 import com.example.app_c_truyn.MainActivity;
@@ -17,21 +20,41 @@ import com.example.app_c_truyn.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    //tao bien cho man dang nhap
-    EditText edtTaiKhoan,edtMatKhau;
+    EditText edtTaiKhoan, edtMatKhau;
     Button btnDangNhap;
     TextView btnDangKy;
-    //tao doi tuong cho databasedoctruyen
-   DatabaseStory db;
+    CheckBox rememberCheckbox;
+    DatabaseStory db;
+
+    // SharedPreferences for storing login credentials
+    private static final String PREF_NAME = "LoginPrefs";
+    private static final String KEY_USERNAME = "username";
+    private static final String KEY_PASSWORD = "password";
+    private static final String KEY_REMEMBER = "remember";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);//thiết lập giao diện cho Activity bằng cách sử dụng một tệp XML
+        setContentView(R.layout.activity_login);
+
         AnhXa();
-        // doi tuong database doc truyen
-        db = new DatabaseStory(this); //tham chiếu đến Activity hiện tại
-        // tao su kien click chuyen sang man hinh dang ky voi intent
+
+        // Initialize SharedPreferences
+        SharedPreferences loginPrefs = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        boolean remember = loginPrefs.getBoolean(KEY_REMEMBER, false);
+
+        // If "Remember Me" is checked, populate the username and password fields
+        if (remember) {
+            String savedUsername = loginPrefs.getString(KEY_USERNAME, "");
+            String savedPassword = loginPrefs.getString(KEY_PASSWORD, "");
+
+            edtTaiKhoan.setText(savedUsername);
+            edtMatKhau.setText(savedPassword);
+            rememberCheckbox.setChecked(true);
+        }
+
+        db = new DatabaseStory(this);
+
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,41 +62,47 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String userName = edtTaiKhoan.getText().toString();
                 String passWord = edtMatKhau.getText().toString();
-                //su dung con tro de lay du lieu
+
                 Cursor cursor = db.getData();
+                boolean isLoginSuccessful = false;
 
-                boolean isLoginSuccessful = false; // Biến kiểm tra trạng thái đăng nhập
-
-                //thuc hien vong lap de lay du lieu tu cursor voi movetonext() di chuyen tiep
-                while (cursor.moveToNext()){
-                    //du lieu tai khoan o o 1,mat khau o 2,0 id tai khoan , 3 emall,4 phanquyen
+                while (cursor.moveToNext()) {
                     String datatentaikhoan = cursor.getString(1);
                     String datamatkhau = cursor.getString(2);
 
-                    if(datatentaikhoan.equals(userName) && datamatkhau.equals(passWord)){
-                        isLoginSuccessful = true; // Đăng nhập thành công
+                    if (datatentaikhoan.equals(userName) && datamatkhau.equals(passWord)) {
+                        isLoginSuccessful = true;
+
+                        // Save login credentials to SharedPreferences if "Remember Me" is checked
+                        if (rememberCheckbox.isChecked()) {
+                            SharedPreferences.Editor editor = loginPrefs.edit();
+                            editor.putString(KEY_USERNAME, userName);
+                            editor.putString(KEY_PASSWORD, passWord);
+                            editor.putBoolean(KEY_REMEMBER, true);
+                            editor.apply();
+                        }
+
+                        // Rest of your login logic
                         int phanquyen = cursor.getInt(4);
                         int idd = cursor.getInt(0);
-
                         String email = cursor.getString(3);
                         String tentk = cursor.getString(1);
-                        //chuyen qua mainactivity
+
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        //gui du lieu qua activity la mainactivity
-                        intent.putExtra("phanq",phanquyen);
-                        intent.putExtra("idd",idd);
-                        intent.putExtra("email",email);
-                        intent.putExtra("tentaikhoan",tentk);
-
+                        intent.putExtra("phanq", phanquyen);
+                        intent.putExtra("idd", idd);
+                        intent.putExtra("email", email);
+                        intent.putExtra("tentaikhoan", tentk);
                         startActivity(intent);
-                        break; // Thoát khỏi vòng lặp while sau khi đăng nhập thành công
-                    }
 
+                        break;
+                    }
                 }
 
                 if (isLoginSuccessful) {
@@ -82,20 +111,17 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                 }
 
-                //thuc hien tra cursor ve dau
                 cursor.moveToFirst();
-                //dong khi k dung
                 cursor.close();
             }
         });
-
     }
-    private void AnhXa(){
+
+    private void AnhXa() {
         edtMatKhau = findViewById(R.id.matkhau);
         edtTaiKhoan = findViewById(R.id.taikhoan);
         btnDangKy = findViewById(R.id.dangky);
         btnDangNhap = findViewById(R.id.dangnhap);
-
-
+        rememberCheckbox = findViewById(R.id.remember_checkbox);
     }
 }

@@ -14,7 +14,7 @@ public class InformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_information);
         TextView txtInfo = findViewById(R.id.txtInfo);
-        String info = "Bản quyền thuộc Hoàng Đình Dũng \nLớp: 62PM2 \n Mã sinh viên: 2051063940";
+        String info = "Hoàng Đình Dũng \nLớp: 62PM2 \nMã sinh viên: 2051063940";
         txtInfo.setText(info);
     }
 }
