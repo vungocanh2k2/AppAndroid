@@ -33,7 +33,8 @@ public class EditUserActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.edt_password);
         edtEmail = findViewById(R.id.edt_email);
         Button btnSaveChanges = findViewById(R.id.btn_save);
-        ImageButton btnCancel = findViewById(R.id.backContent);
+        ImageButton btnCancel = findViewById(R.id.back_EditUser);
+
 
         db = new DatabaseStory(this);
 

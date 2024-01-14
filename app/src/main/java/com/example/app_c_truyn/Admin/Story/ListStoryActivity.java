@@ -89,11 +89,17 @@ public class ListStoryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Get the ID of the selected story
                 int storyId = storyArrayList.get(position).getID();
-
+                String nameStory = storyArrayList.get(position).getNameStory();
+                String content = storyArrayList.get(position).getContent();
+                String image = storyArrayList.get(position).getImage();
                 // Pass the story ID to the EditStoryActivity
                 Intent intent = new Intent(ListStoryActivity.this, EditStoryActivity.class);
                 // In ListStoryActivity
+
                 intent.putExtra("story_id", storyId);
+                intent.putExtra("nameStory", nameStory);
+                intent.putExtra("content", content);
+                intent.putExtra("image", image);
                 startActivity(intent);
                 dialog.dismiss();
             }

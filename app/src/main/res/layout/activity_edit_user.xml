@@ -24,6 +24,7 @@
             android:layout_marginBottom="16dp"
             android:text="Sửa tài khoản"
             android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:textSize="35sp"
             android:textStyle="bold"
             tools:ignore="HardcodedText" />
@@ -38,6 +39,7 @@
             android:drawablePadding="10dp"
             android:hint="Tên đăng nhập"
             android:inputType="text"
+            android:textColor="@color/white"
             android:textColorHint="@color/white" />
 
         <EditText
@@ -50,6 +52,7 @@
             android:drawablePadding="10dp"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
+            android:textColor="@color/white"
             android:textColorHint="@color/white" />
 
         <EditText
@@ -62,6 +65,7 @@
             android:drawableStart="@drawable/ic_email"
             android:drawablePadding="10dp"
             android:hint="Email"
+            android:textColor="@color/white"
             android:inputType="text"
             android:textColorHint="@color/white" />
 

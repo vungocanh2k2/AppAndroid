@@ -32,7 +32,7 @@ public class EditStoryActivity extends AppCompatActivity {
         // Lấy thông tin truyện từ Intent
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            storyId = bundle.getInt("story_id");
+            storyId = bundle.getInt("story_id", 0); // Use "story_id" instead of "Id"
             String title = bundle.getString("nameStory");
             String content = bundle.getString("content");
             String image = bundle.getString("image");
@@ -60,13 +60,12 @@ public class EditStoryActivity extends AppCompatActivity {
                 updatedStory.setContent(content);
                 updatedStory.setImage(image);
 
-                // Cập nhật truyện trong cơ sở dữ liệu
+                // Cập nhật truyện vào trong cơ sở dữ liệu
                 if (databaseStory.updateStory(updatedStory)) {
                     Toast.makeText(EditStoryActivity.this, "Cập nhật truyện thành công", Toast.LENGTH_SHORT).show();
                     finish(); // Kết thúc activity và quay trở lại màn hình trước đó
                 } else {
-                    // Handle the case where the update operation fails
-                    Toast.makeText(EditStoryActivity.this, "Error: Unable to update story", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditStoryActivity.this, "Cập nhật truyện không thành công", Toast.LENGTH_SHORT).show();
                 }
             }
         });

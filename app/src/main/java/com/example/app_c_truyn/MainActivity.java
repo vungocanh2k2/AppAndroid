@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         storyArrayList = new ArrayList<>();
 
-        Cursor cursor1 = db.getDataStory();
+        Cursor cursor1 = db.getAllStory();
 
         while (cursor1.moveToNext()){
             int id = cursor1.getInt(0);
