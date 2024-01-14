@@ -20,11 +20,12 @@
             android:src="@drawable/baseline_arrow_back_24"/>
 
         <EditText
-            android:background="@color/black"
+            android:background="@drawable/shape_button"
             android:textColor="@color/white"
             android:id="@+id/search"
             android:textColorHint="@color/white"
-            android:hint="Tìm kiếm..."
+            android:hint="Nhập tên truyện muốn tìm kiếm ..."
+            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             tools:ignore="Autofill,HardcodedText,TextFields" />
