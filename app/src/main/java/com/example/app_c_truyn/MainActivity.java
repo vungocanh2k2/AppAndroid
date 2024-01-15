@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
+
 import com.example.app_c_truyn.Adapter.AdapterCategory;
 import com.example.app_c_truyn.Adapter.AdapterInformation;
 import com.example.app_c_truyn.Adapter.AdapterStory;
@@ -30,15 +31,16 @@ import com.example.app_c_truyn.Model.Story;
 import com.example.app_c_truyn.Model.User;
 import com.squareup.picasso.Picasso;
 import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     ViewFlipper viewFlipper;
     NavigationView navigationView;
-    ListView listView,listViewNew,listViewThongTin;
+    ListView listView, listViewNew, listViewThongTin;
     DrawerLayout drawerLayout;
-    String email,nameUser;
+    String email, nameUser;
 
     ArrayList<Category> categoryArrayList;
     ArrayList<Story> storyArrayList;
@@ -61,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
 
         // nhan du lieu o man dang nhap gui
         Intent intent = getIntent();
-        int i = intent.getIntExtra("phanq",0);
-        int idd = intent.getIntExtra("idd",0);
+        int i = intent.getIntExtra("role", 0);
+        int id_login = intent.getIntExtra("id", 0);
         email = intent.getStringExtra("email");
-        nameUser = intent.getStringExtra("tentaikhoan");
+        nameUser = intent.getStringExtra("username");
 
         toolbar = findViewById(R.id.toolbarmanhinhchinh);
         viewFlipper = findViewById(R.id.viewflipper);
@@ -78,15 +80,15 @@ public class MainActivity extends AppCompatActivity {
 
         Cursor cursor1 = db.getAllStory();
 
-        while (cursor1.moveToNext()){
+        while (cursor1.moveToNext()) {
             int id = cursor1.getInt(0);
             String nameStory = cursor1.getString(1);
             String content = cursor1.getString(2);
             String image = cursor1.getString(3);
             int id_tk = cursor1.getInt(4);
 
-            storyArrayList.add(new Story(id,nameStory,content,image,id_tk));
-            adapterStory = new AdapterStory(getApplicationContext(),storyArrayList);
+            storyArrayList.add(new Story(id, nameStory, content, image, id_tk));
+            adapterStory = new AdapterStory(getApplicationContext(), storyArrayList);
             listViewNew.setAdapter(adapterStory);
 
         }
@@ -95,15 +97,17 @@ public class MainActivity extends AppCompatActivity {
 
         //thong tin
         userArrayList = new ArrayList<>();
-        userArrayList.add(new User(nameUser,email));
+        userArrayList.add(new User(nameUser, email));
 
-        adapterInformation = new AdapterInformation(this,R.layout.item_nagivation,userArrayList);
+        adapterInformation = new AdapterInformation(this, R.layout.item_nagivation, userArrayList);
         listViewThongTin.setAdapter(adapterInformation);
 
         boolean isAdmin = i == 2;
 
         categoryArrayList = new ArrayList<>();
         categoryArrayList.add(new Category("Thông Tin App", R.drawable.baseline_info_24));
+        categoryArrayList.add(new Category("Cài Đặt", R.drawable.baseline_settings_24));
+        categoryArrayList.add(new Category("Liên Hệ", R.drawable.baseline_send_24));
         categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
 
         if (isAdmin) {
@@ -112,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Tạo adapter cho danh sách chuyên mục
-        adapterCategory = new AdapterCategory(this,R.layout.item_category,categoryArrayList);
+        adapterCategory = new AdapterCategory(this, R.layout.item_category, categoryArrayList);
         listView.setAdapter(adapterCategory);
 
         ActionBar();
@@ -122,12 +126,12 @@ public class MainActivity extends AppCompatActivity {
         listViewNew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this,ContentActivity.class);
+                Intent intent = new Intent(MainActivity.this, ContentActivity.class);
 
                 String nameStory = storyArrayList.get(position).getNameStory();
                 String content = storyArrayList.get(position).getContent();
-                intent.putExtra("tentruyen",nameStory);
-                intent.putExtra("noidung",content);
+                intent.putExtra("tentruyen", nameStory);
+                intent.putExtra("noidung", content);
                 startActivity(intent);
 
             }
@@ -138,23 +142,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //neu vi tri an vao la thong tin thi chuyen qua man hinh thong tin
-                if(position == 0){
-                    Intent intent = new Intent(MainActivity.this,InformationActivity.class);
-                    startActivity(intent);
-                }
-                else if(position == 1){
-                    finish();//dang xuat
-                }
-                else if(position==2){
+                if (position == 0) {
+                    startActivity(new Intent(MainActivity.this, InformationActivity.class));
+                } else if (position == 1) {
+                    startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                } else if (position == 2) {
+                    startActivity(new Intent(MainActivity.this, ContactActivity.class));
+                } else if (position == 3) {
+                    finish();//đăng xuất
+                } else if (position == 4) {
                     Intent intent = new Intent(MainActivity.this, ListStoryActivity.class);
                     // gui id tai khoan qua man admin
-                    intent.putExtra("Id",idd);
+                    intent.putExtra("Id", id_login);
                     startActivity(intent);
-                }
-                else if(position == 3){
+                } else if (position == 5) {
                     Intent intent = new Intent(MainActivity.this, ListUserActivity.class);
                     // gui id tai khoan qua man admin
-                    intent.putExtra("Id",idd);
+                    intent.putExtra("Id", id_login);
                     startActivity(intent);
                 }
             }
@@ -167,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         // ham ho tro toolbar
         setSupportActionBar(toolbar);
         // set nut cho actionbar
-       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // tao icon cho toolbar
         toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
 
@@ -181,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //phuong thuc cho chay quang cao voi ViewFlipper
-    private void ActionViewFlipper(){
+    private void ActionViewFlipper() {
         //mang chua tam anh cho quang cao
         ArrayList<String> mangquangcao = new ArrayList<>();
         //add anh vao mang
@@ -191,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         mangquangcao.add("https://truyendangian.com/wp-content/uploads/2023/01/dan-dan-quan.jpg");
 
         //thuc hien vong lap for gan anh vao imageview, roi tu image view len app
-        for(int i=0;i<mangquangcao.size();i++){
+        for (int i = 0; i < mangquangcao.size(); i++) {
             ImageView imageView = new ImageView(getApplicationContext());
             //su dung ham thu vien picasso
             Picasso.get().load(mangquangcao.get(i)).into(imageView);
@@ -206,8 +210,8 @@ public class MainActivity extends AppCompatActivity {
         //run auto
         viewFlipper.setAutoStart(true);
         //gọi animation cho vao va ra
-        Animation animation_slide_in = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_in_right);
-        Animation animation_slide_out = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_out_right);
+        Animation animation_slide_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right);
+        Animation animation_slide_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_out_right);
 
         //goi animation vao flipper
         viewFlipper.setInAnimation(animation_slide_in);
@@ -219,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
     //Nạp một menu tìm kiếm vào Actionbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.mymenu,menu);
+        getMenuInflater().inflate(R.menu.mymenu, menu);
         return true;
     }
 

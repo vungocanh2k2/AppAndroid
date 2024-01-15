@@ -76,8 +76,7 @@ public class EditUserActivity extends AppCompatActivity {
                     db.updateUser(user);
 
                     // Hiển thị thông báo thành công
-                    Toast.makeText(getApplicationContext(), "Thông tin người dùng được cập nhật thành công", Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(getApplicationContext(), "Thông tin người dùng  được cập nhật thành công", Toast.LENGTH_LONG).show();
                     // Kết thúc activity
                     finish();
                 }

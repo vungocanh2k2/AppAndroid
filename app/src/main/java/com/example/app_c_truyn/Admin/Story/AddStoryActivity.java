@@ -2,7 +2,6 @@ package com.example.app_c_truyn.Admin.Story;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,28 +11,24 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.app_c_truyn.Database.DatabaseStory;
-import com.example.app_c_truyn.MainActivity;
 import com.example.app_c_truyn.Model.Story;
 import com.example.app_c_truyn.R;
 
 public class AddStoryActivity extends AppCompatActivity {
 
-    EditText edtTenTruyen,edtNoiDung,edtAnh;
-    Button btnDangBai;
-    DatabaseStory db;
-    ImageButton btnBack;
+    private EditText edtnameStory, edtContent, edtImage;
+    private DatabaseStory db;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_story);
 
-        edtAnh = findViewById(R.id.dbimg);
-        edtTenTruyen = findViewById(R.id.dbTentruyen);
-        edtNoiDung = findViewById(R.id.dbnoidung);
-        btnDangBai = findViewById(R.id.dbdangbai);
-        btnBack = findViewById(R.id.backAddStory);
+        edtImage = findViewById(R.id.dbimg);
+        edtnameStory = findViewById(R.id.dbTentruyen);
+        edtContent = findViewById(R.id.dbnoidung);
+        Button btnAddStory = findViewById(R.id.dbdangbai);
+        ImageButton btnBack = findViewById(R.id.backAddStory);
 
         db = new DatabaseStory(this);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -44,42 +39,37 @@ public class AddStoryActivity extends AppCompatActivity {
             }
         });
 
-        btnDangBai.setOnClickListener(new View.OnClickListener() {
+        btnAddStory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nameStory = edtTenTruyen.getText().toString();
-                String Content = edtNoiDung.getText().toString();
-                String image = edtAnh.getText().toString();
+                String nameStory = edtnameStory.getText().toString();
+                String Content = edtContent.getText().toString();
+                String image = edtImage.getText().toString();
 
                 Story story = CreateStory();
 
-                if(nameStory.equals("") || Content.equals("")|| image.equals("")){
+                if (nameStory.equals("") || Content.equals("") || image.equals("")) {
                     Toast.makeText(AddStoryActivity.this, "Vui lòng nhập đầy đủ thông tin.", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     db.AddStory(story);
-                    Toast.makeText(AddStoryActivity.this, "Thêm truyện thành công.",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AddStoryActivity.this, ListStoryActivity.class);
-                    startActivity(intent);
-
+                    Toast.makeText(AddStoryActivity.this, "Thêm truyện thành công.", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(AddStoryActivity.this, ListStoryActivity.class));
                 }
-
-
             }
         });
 
     }
 
     // phuong thuc tao truyen
-    private Story CreateStory(){
-        String nameStory = edtTenTruyen.getText().toString();
-        String Content = edtNoiDung.getText().toString();
-        String image = edtAnh.getText().toString();
+    private Story CreateStory() {
+        String nameStory = edtnameStory.getText().toString();
+        String Content = edtContent.getText().toString();
+        String image = edtImage.getText().toString();
 
         Intent intent = getIntent();
 
-        int id = intent.getIntExtra("Id",0);
+        int id = intent.getIntExtra("Id", 0);
 
-        return new Story(nameStory,Content,image,id);
+        return new Story(nameStory, Content, image, id);
     }
 }

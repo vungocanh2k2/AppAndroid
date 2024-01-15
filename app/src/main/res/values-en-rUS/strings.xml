@@ -1,0 +1,21 @@
+<resources>
+
+    <string name="app_name">Read Story</string>
+
+    <!--Đăng nhập, đăng ký-->
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="datecreated">Date Create</string>
+    <string name="register">Register</string>
+    <string name="exit">Exit</string>
+    <string name="login">Login </string>
+    <string name="change_language">Change language</string>
+    <string name="remember">Remember account</string>
+    <string name="dangki">Do not have an account, <b>SignUp ?</b> </string>
+
+    <!--Trang chủ-->
+    <string name="contact">Contact </string>
+    <string name="name_Cate">Name Category </string>
+
+</resources>

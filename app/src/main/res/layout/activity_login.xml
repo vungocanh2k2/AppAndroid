@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="90dp"
         android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="@string/login"
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Ghi nhớ tài khoản"
+        android:text="@string/remember"
         android:textColor="@color/white" />
 
     <Button
@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/shape_button"
+        android:background="@drawable/shape_transparent_button"
         android:text="@string/login"
         android:textSize="30dp" />
 
@@ -73,5 +73,16 @@
         android:layout_marginTop="30dp"
         android:text="@string/dangki"
         android:textColor="@color/white" />
+
+    <ImageButton
+        android:id="@+id/thaydoingonngu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="end|bottom"
+        android:background="@android:color/transparent"
+        android:src="@drawable/baseline_language_24"
+        android:contentDescription="@string/change_language" />
 
 </LinearLayout>

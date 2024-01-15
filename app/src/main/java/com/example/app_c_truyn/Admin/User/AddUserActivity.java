@@ -59,7 +59,7 @@ public class AddUserActivity extends AppCompatActivity {
                     Toast.makeText(AddUserActivity.this, "Tài khoản hoặc email đã tồn tại!", Toast.LENGTH_LONG).show();
                 } else {
                     db.AddTaiKhoan(user);
-                    Toast.makeText(AddUserActivity.this, "Thêm mới thành công", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddUserActivity.this, "Thêm người dùng" + userName + "thành công", Toast.LENGTH_LONG).show();
                     finish();
                 }
 
@@ -69,7 +69,7 @@ public class AddUserActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddUserActivity.this,ListUserActivity.class);
+                Intent intent = new Intent(AddUserActivity.this, ListUserActivity.class);
                 startActivity(intent);
             }
         });

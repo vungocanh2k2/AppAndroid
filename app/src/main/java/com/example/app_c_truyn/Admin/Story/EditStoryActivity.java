@@ -14,7 +14,7 @@ import com.example.app_c_truyn.R;
 public class EditStoryActivity extends AppCompatActivity {
 
     private EditText etTitle, etContent, etImage;
-    private DatabaseStory databaseStory;
+    private DatabaseStory db;
     private int storyId;
 
     @Override
@@ -27,7 +27,7 @@ public class EditStoryActivity extends AppCompatActivity {
         etImage = findViewById(R.id.et_image);
         Button btnSave = findViewById(R.id.btn_save);
 
-        databaseStory = new DatabaseStory(this);
+        db = new DatabaseStory(this);
 
         // Lấy thông tin truyện từ Intent
         Bundle bundle = getIntent().getExtras();
@@ -61,11 +61,11 @@ public class EditStoryActivity extends AppCompatActivity {
                 updatedStory.setImage(image);
 
                 // Cập nhật truyện vào trong cơ sở dữ liệu
-                if (databaseStory.updateStory(updatedStory)) {
-                    Toast.makeText(EditStoryActivity.this, "Cập nhật truyện thành công", Toast.LENGTH_SHORT).show();
+                if (db.updateStory(updatedStory)) {
+                    Toast.makeText(EditStoryActivity.this, "Cập nhật truyện" + nameStory + " thành công", Toast.LENGTH_SHORT).show();
                     finish(); // Kết thúc activity và quay trở lại màn hình trước đó
                 } else {
-                    Toast.makeText(EditStoryActivity.this, "Cập nhật truyện không thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EditStoryActivity.this, "Cập nhật truyện" + nameStory + " không thành công", Toast.LENGTH_SHORT).show();
                 }
             }
         });

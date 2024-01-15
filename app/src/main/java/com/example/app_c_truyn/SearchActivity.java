@@ -12,9 +12,11 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+
 import com.example.app_c_truyn.Adapter.AdapterStory;
 import com.example.app_c_truyn.Database.DatabaseStory;
 import com.example.app_c_truyn.Model.Story;
+
 import java.util.ArrayList;
 
 
@@ -23,10 +25,8 @@ public class SearchActivity extends AppCompatActivity {
     ListView listView;
     EditText edt;
     ImageButton back;
-
     ArrayList<Story> storyArrayList;
     ArrayList<Story> arrayList;
-
     AdapterStory adapterStory;
     DatabaseStory db;
 
@@ -47,30 +47,36 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         initList();
-        // bat clickcho item
+
+        // bat click cho item
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SearchActivity.this,ContentActivity.class);
+                Intent intent = new Intent(SearchActivity.this, ContentActivity.class);
                 String nameStory = arrayList.get(position).getNameStory();
                 String content = arrayList.get(position).getContent();
-                intent.putExtra("tentruyen",nameStory);
-                intent.putExtra("noidung",content);
+                intent.putExtra("tentruyen", nameStory);
+                intent.putExtra("noidung", content);
                 startActivity(intent);
             }
         });
         // editText search
         edt.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int count, int after) {}
+            public void onTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
-            public void afterTextChanged(Editable s) {filter(s.toString());}
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
         });
     }
+
     // search
     private void filter(String text) {
         // Xóa mảng arrayList
@@ -99,18 +105,18 @@ public class SearchActivity extends AppCompatActivity {
 
         Cursor cursor = db.getAllStory();
 
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String nameStory = cursor.getString(1);
             String content = cursor.getString(2);
             String image = cursor.getString(3);
             int id_tk = cursor.getInt(4);
 
-            storyArrayList.add(new Story(id,nameStory,content,image,id_tk));
+            storyArrayList.add(new Story(id, nameStory, content, image, id_tk));
 
-            arrayList.add(new Story(id,nameStory,content,image,id_tk));
+            arrayList.add(new Story(id, nameStory, content, image, id_tk));
 
-            adapterStory = new AdapterStory(getApplicationContext(),storyArrayList);
+            adapterStory = new AdapterStory(getApplicationContext(), storyArrayList);
 
             listView.setAdapter(adapterStory);
 

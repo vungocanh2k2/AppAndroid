@@ -1,11 +1,20 @@
 <resources>
-    <string name="app_name">DRS</string>
-    <string name="name">Email</string>
+
+    <string name="app_name">Đọc Truyện</string>
+    <!--Đăng nhập, đăng ký-->
+    <string name="email">Email</string>
     <string name="username">Tên Tài Khoản</string>
     <string name="password">Mật Khẩu</string>
     <string name="datecreated">Ngày Tạo</string>
     <string name="register">Đăng Kí </string>
     <string name="exit">Thoát</string>
     <string name="login">Đăng Nhập </string>
+    <string name="change_language">Chọn ngôn ngữ</string>
+    <string name="remember">Ghi nhớ tài khoản</string>
     <string name="dangki">Bạn chưa có tài khoản, <b>Đăng ký?</b> </string>
+
+    <!--Trang chủ-->
+    <string name="contact">Liên Hệ </string>
+    <string name="name_Cate">Tên chuyên mục </string>
+
 </resources>
