@@ -50,6 +50,9 @@ public class DatabaseStory extends SQLiteOpenHelper {
         String CREATE_ADMIN = "INSERT INTO " + TABLE_TAIKHOAN
                 + " VALUES (null,'admin12','admin12','admin@gmail.com',2)";
         db.execSQL(CREATE_ADMIN);
+        String CREATE_ADMIN_01 = "INSERT INTO " + TABLE_TAIKHOAN
+                + " VALUES (null,'dung123','dung123','dung@gmail.com',1)";
+        db.execSQL(CREATE_ADMIN_01);
 
         //Tạo bảng truyện
         String CREATE_TABLE_STORY = "CREATE TABLE " + TABLE_STORY + " ( " + ID_STORY + " integer primary key AUTOINCREMENT, "
@@ -80,7 +83,6 @@ public class DatabaseStory extends SQLiteOpenHelper {
     public void AddTaiKhoan(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         if (CheckUser(user.getUserName(), user.getEmail())) {
-            Log.e("Add Tk", "Username already exists");
             return;
         }
         ContentValues values = new ContentValues();
@@ -92,7 +94,6 @@ public class DatabaseStory extends SQLiteOpenHelper {
         db.insert(TABLE_TAIKHOAN, null, values);
 
         db.close();
-        Log.e("Add Tk", "TC");
     }
 
     public boolean CheckUser(String taikhoan, String email) {

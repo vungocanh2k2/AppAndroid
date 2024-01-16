@@ -18,4 +18,9 @@
     <string name="contact">Contact </string>
     <string name="name_Cate">Name Category </string>
 
+    <!--Cài đặt-->
+    <string name="setting">Setting </string>
+    <string name="language">Change language</string>
+    <string name="color">Change the look </string>
+
 </resources>

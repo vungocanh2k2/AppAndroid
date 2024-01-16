@@ -33,6 +33,7 @@ import com.squareup.picasso.Picasso;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Story> storyArrayList;
     ArrayList<User> userArrayList;
 
+    //adapter
     AdapterStory adapterStory;
     AdapterCategory adapterCategory;
     AdapterInformation adapterInformation;
@@ -170,10 +172,12 @@ public class MainActivity extends AppCompatActivity {
     private void ActionBar() {
         // ham ho tro toolbar
         setSupportActionBar(toolbar);
+
         // set nut cho actionbar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
         // tao icon cho toolbar
-        toolbar.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
+        toolbar.setNavigationIcon(R.drawable.baseline_menu_24);
 
         // Bắt sự kiện click
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

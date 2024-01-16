@@ -51,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Lưu"
+        android:background="@drawable/shape_transparent_button_01"
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/et_image"
         app:layout_constraintStart_toStartOf="parent"
