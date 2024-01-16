@@ -31,7 +31,21 @@ public class DatabaseStory extends SQLiteOpenHelper {
     private static final String IMAGE = "image";
 
     private Context context;
-
+    private final String SQLQuery1 = "INSERT INTO story VALUES (null,'Hai quan đấy!','Lão quan nọ có tính nịnh vợ. Lão ra lệnh hễ ai gặp cũng phải chào: “Lạy hai quan ạ!”.\n" +
+            "\n" +
+            "Có chú bé giả vờ hoàn toàn chẳng hay gì về cái lệnh ấy. Thấy vợ quan đi cạnh quan, chú bế chó, đi sát vào.\n" +
+            "\n" +
+            "Gặp ai đi qua, chú gào to:\n" +
+            "\n" +
+            "– Hai quan đấy!\n" +
+            "\n" +
+            "Quan thấy chú bé có ý xỏ mình, quát:\n" +
+            "\n" +
+            "– Mày dám láo hử?\n" +
+            "\n" +
+            "Chú chỉ vào chó:\n" +
+            "\n" +
+            "– Dạ bẩm, chó hai quan, chó đáng giá hai quan, thật đấy ạ!.','https://truyendangian.com/wp-content/uploads/2023/06/hai-quan-day.jpg',1)";
     public DatabaseStory(@Nullable Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
@@ -61,6 +75,7 @@ public class DatabaseStory extends SQLiteOpenHelper {
                 + IMAGE + " TEXT, " + ID_TAI_KHOAN + " INTEGER , FOREIGN KEY ( " + ID_TAI_KHOAN + " ) REFERENCES " +
                 TABLE_TAIKHOAN + "(" + ID_TAI_KHOAN + "))";
         db.execSQL(CREATE_TABLE_STORY);
+        db.execSQL(SQLQuery1);
     }
 
 
