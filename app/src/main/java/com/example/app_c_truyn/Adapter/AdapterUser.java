@@ -46,7 +46,7 @@ public class AdapterUser extends RecyclerView.Adapter<AdapterUser.UserViewHolder
         // Xử lý sự kiện khi người dùng click vào nút Edit
         holder.buttonEdit.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
-            Toast.makeText(context, "Sửa User " + (position + 1), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Sửa tài khoản " + user.getUserName(), Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(context, EditUserActivity.class);
             intent.putExtra("userId", user.getId());

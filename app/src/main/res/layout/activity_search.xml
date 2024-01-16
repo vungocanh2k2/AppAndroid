@@ -33,7 +33,6 @@
 
     </LinearLayout>
 
-
     <ListView
         android:background="@color/black"
         android:id="@+id/lvSearch"

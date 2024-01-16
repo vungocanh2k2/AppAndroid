@@ -94,10 +94,10 @@ public class LoginActivity extends AppCompatActivity {
                 boolean isLoginSuccessful = false;
 
                 while (cursor.moveToNext()) {
-                    String datausername = cursor.getString(1);
-                    String datapassword = cursor.getString(2);
+                    String dataUsername = cursor.getString(1);
+                    String dataPassword = cursor.getString(2);
 
-                    if (datausername.equals(userName) && datapassword.equals(passWord)) {
+                    if (dataUsername.equals(userName) && dataPassword.equals(passWord)) {
                         isLoginSuccessful = true;
 
                         // Save login credentials to SharedPreferences if "Remember Me" is checked

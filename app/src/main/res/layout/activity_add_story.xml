@@ -25,6 +25,14 @@
         android:text="Thêm truyện mới"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:text="Tên truyện"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <EditText
         android:inputType="text"
         android:id="@+id/dbTentruyen"
@@ -32,29 +40,45 @@
         android:textColor="@color/white"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:textColorHint = "@color/white"
+        android:textColorHint="@color/white"
         android:layout_width="match_parent"
         android:paddingLeft="10dp"
         android:background="@drawable/shape_button"
         android:layout_height="50dp"/>
+
+    <TextView
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:text="Nội dung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <EditText
-        android:inputType="text"
         android:id="@+id/dbnoidung"
+        android:inputType="text"
         android:hint="Nội dung"
         android:textColor="@color/white"
         android:layout_gravity="center"
-        android:textColorHint = "@color/white"
+        android:textColorHint="@color/white"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:background="@drawable/shape_button"
         android:paddingLeft="10dp"
-        android:layout_height="100dp"/>
+        android:layout_height="100dp"
+        android:textCursorDrawable="@null" />
+
+    <TextView
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:text="Ảnh (Url)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <EditText
         android:inputType="text"
         android:id="@+id/dbimg"
         android:hint="Ảnh (Url)"
-        android:textColorHint = "@color/white"
+        android:textColorHint="@color/white"
         android:textColor="@color/white"
         android:layout_gravity="center"
         android:background="@drawable/shape_button"
@@ -62,13 +86,17 @@
         android:layout_width="match_parent"
         android:paddingLeft="10dp"
         android:layout_height="50dp"/>
+
     <Button
         android:id="@+id/dbdangbai"
-        android:text="Thêm"
+        android:text="Lưu"
         android:layout_margin="10dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/shape_button"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_transparent_button_01"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 </LinearLayout>

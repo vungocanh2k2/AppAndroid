@@ -29,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_margin="5dp"
-                android:background="@drawable/shape_transparent_button"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_transparent_button_01"
                 android:text="Thêm truyện"
                 tools:ignore="HardcodedText" />
 

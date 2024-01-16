@@ -193,6 +193,9 @@ public class MainActivity extends AppCompatActivity {
         mangquangcao.add("https://truyendangian.com/wp-content/uploads/2023/05/cau-be-chu-minh.jpg");
         mangquangcao.add("https://truyendangian.com/wp-content/uploads/2023/05/truyen-thuyet-ve-ho-guom.jpg");
         mangquangcao.add("https://truyendangian.com/wp-content/uploads/2023/01/dan-dan-quan.jpg");
+        mangquangcao.add("https://media.istockphoto.com/id/1087508538/vi/anh/m%E1%BB%9F-s%C3%A1ch-v%E1%BB%9Bi-phong-" +
+                "c%E1%BA%A3nh-v%E1%BA%BD-tay.jpg?s=612x612&w=0&k=20&c=rRcq56RaxtIEJZ7JPyLGmPwVNTsInhFOphp8ou7CYqY=");
+
 
         //thuc hien vong lap for gan anh vao imageview, roi tu image view len app
         for (int i = 0; i < mangquangcao.size(); i++) {
@@ -205,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
             //them anh tu image vào view flipper
             viewFlipper.addView(imageView);
         }
-        //thiet lap tu dong chay cho viewflipper chay trong 4s
+        //thiet lap tu dong chay cho viewflipper chay trong 3s
         viewFlipper.setFlipInterval(3000);
         //run auto
         viewFlipper.setAutoStart(true);

@@ -12,13 +12,14 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.app_c_truyn.Adapter.AdapterStory;
 import com.example.app_c_truyn.Database.DatabaseStory;
 import com.example.app_c_truyn.Model.Story;
 
 import java.util.ArrayList;
-
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -32,13 +33,13 @@ public class SearchActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
         listView = findViewById(R.id.lvSearch);
         edt = findViewById(R.id.search);
         back = findViewById(R.id.backSearch);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +49,7 @@ public class SearchActivity extends AppCompatActivity {
 
         initList();
 
-        // bat click cho item
+        // Bắt sự kiện khi nhấp vào một item trong danh sách
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -60,7 +61,8 @@ public class SearchActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        // editText search
+
+        // Bắt sự kiện khi thay đổi nội dung của EditText tìm kiếm
         edt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -77,32 +79,31 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    // search
+    // Tìm kiếm và lọc danh sách
     private void filter(String text) {
-        // Xóa mảng arrayList
-        arrayList.clear();
-
         ArrayList<Story> filteredList = new ArrayList<>();
 
         for (Story item : storyArrayList) {
             if (item.getNameStory() != null && item.getNameStory().toLowerCase().contains(text.toLowerCase())) {
-                // Thêm item vào filteredList
                 filteredList.add(item);
-                // Thêm vào mảng arrayList
-                arrayList.add(item);
             }
         }
+
+        // Kiểm tra nếu danh sách rỗng
+        if (filteredList.isEmpty()) {
+            Toast.makeText(SearchActivity.this, "Không tìm thấy kết quả", Toast.LENGTH_SHORT).show();
+        }
+
+        // Cập nhật danh sách hiển thị trong Adapter
         adapterStory.filterList(filteredList);
     }
 
-    // phuong thuc lay du lieu ,gan vao listview
+    // Khởi tạo danh sách và gán vào ListView
     private void initList() {
         storyArrayList = new ArrayList<>();
-
         arrayList = new ArrayList<>();
 
         db = new DatabaseStory(this);
-
         Cursor cursor = db.getAllStory();
 
         while (cursor.moveToNext()) {
@@ -113,15 +114,12 @@ public class SearchActivity extends AppCompatActivity {
             int id_tk = cursor.getInt(4);
 
             storyArrayList.add(new Story(id, nameStory, content, image, id_tk));
-
             arrayList.add(new Story(id, nameStory, content, image, id_tk));
-
-            adapterStory = new AdapterStory(getApplicationContext(), storyArrayList);
-
-            listView.setAdapter(adapterStory);
-
         }
-        cursor.moveToFirst();
+
         cursor.close();
+
+        adapterStory = new AdapterStory(getApplicationContext(), storyArrayList);
+        listView.setAdapter(adapterStory);
     }
 }
