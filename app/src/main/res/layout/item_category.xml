@@ -10,14 +10,14 @@
 
     <ImageView
         android:id="@+id/imgCate"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_margin="10dp"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:gravity="center"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:text="@string/name_Cate"
         android:id="@+id/nameCate"
         android:layout_margin="10dp"

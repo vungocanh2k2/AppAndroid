@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         // nhan du lieu o man dang nhap gui
         Intent intent = getIntent();
-        int i = intent.getIntExtra("role", 0);
+        int role = intent.getIntExtra("role", 0);
         int id_login = intent.getIntExtra("id", 0);
         email = intent.getStringExtra("email");
         nameUser = intent.getStringExtra("username");
@@ -118,20 +118,30 @@ public class MainActivity extends AppCompatActivity {
         adapterInformation = new AdapterInformation(this, R.layout.item_nagivation, userArrayList);
         listViewThongTin.setAdapter(adapterInformation);
 
-        boolean isAdmin = i == 2;
+        boolean isAdmin = role == 2;
 
         categoryArrayList = new ArrayList<>();
-        categoryArrayList.add(new Category("Thông tin cá nhân", R.drawable.baseline_person_24));
-        categoryArrayList.add(new Category("Truyện yêu thích", R.drawable.baseline_favorite_24));
-        categoryArrayList.add(new Category("Cài Đặt", R.drawable.baseline_settings_24));
-        categoryArrayList.add(new Category("Thông Tin App", R.drawable.baseline_info_24));
-        categoryArrayList.add(new Category("Liên Hệ", R.drawable.baseline_send_24));
-        categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
-
         if (isAdmin) {
+            categoryArrayList.add(new Category("Thông tin cá nhân", R.drawable.baseline_person_24));
+            categoryArrayList.add(new Category("Truyện yêu thích", R.drawable.baseline_favorite_24));
+            categoryArrayList.add(new Category("Cài Đặt", R.drawable.baseline_settings_24));
+            categoryArrayList.add(new Category("Thông Tin App", R.drawable.baseline_info_24));
+            categoryArrayList.add(new Category("Liên Hệ", R.drawable.baseline_send_24));
+            categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
             categoryArrayList.add(new Category("Quản lý truyện", R.drawable.ic_post_add));
             categoryArrayList.add(new Category("Quản lý người dùng", R.drawable.baseline_manage_accounts_24));
         }
+        else {
+            categoryArrayList.add(new Category("Thông tin cá nhân", R.drawable.baseline_person_24));
+            categoryArrayList.add(new Category("Truyện yêu thích", R.drawable.baseline_favorite_24));
+            categoryArrayList.add(new Category("Cài Đặt", R.drawable.baseline_settings_24));
+            categoryArrayList.add(new Category("Thông Tin App", R.drawable.baseline_info_24));
+            categoryArrayList.add(new Category("Liên Hệ", R.drawable.baseline_send_24));
+            categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
+        }
+
+
+
 
         // Tạo adapter cho danh sách chuyên mục
         adapterCategory = new AdapterCategory(this, R.layout.item_category, categoryArrayList);
