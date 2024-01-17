@@ -37,6 +37,7 @@
         android:drawablePadding="10dp"
         android:hint="Tên đăng nhập"
         android:inputType="text"
+        android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
     <EditText
@@ -49,6 +50,7 @@
         android:drawablePadding="10dp"
         android:hint="Mật khẩu"
         android:inputType="textPassword"
+        android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
     <EditText
@@ -62,6 +64,7 @@
         android:drawablePadding="10dp"
         android:hint="Email"
         android:inputType="text"
+        android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
     <Button
@@ -72,5 +75,5 @@
         android:textColor="@color/white"
         android:background="@drawable/shape_transparent_button_01"        android:text="Lưu"
         android:textAllCaps="false"
-        android:textSize="25dp" />
+        android:textSize="30dp" />
 </LinearLayout>

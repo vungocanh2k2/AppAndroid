@@ -1,12 +1,10 @@
-package com.example.app_c_truyn.Database;
+package com.example.app_c_truyn;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -360,16 +358,11 @@ public class DatabaseStory extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Method to get all favorite stories as a List
-    public Cursor getAllFavoriteStoriesList() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_FAVORITE, null);
-    }
 
-    //Xóa yêu thích truyện
-    public int DeleteStoryFavo(int i) {
+    public Cursor getAllFavoriteStoriesList(String userID) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.delete(TABLE_FAVORITE, ID_STORY + " = " + i, null);
+        return db.rawQuery("SELECT * FROM " + TABLE_FAVORITE
+                + " WHERE " + ID_TAI_KHOAN + " = ?", new String[]{userID});
     }
 
 

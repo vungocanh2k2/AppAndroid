@@ -63,13 +63,13 @@ public class AddStoryActivity extends AppCompatActivity {
     // phuong thuc tao truyen
     private Story CreateStory() {
         String nameStory = edtnameStory.getText().toString();
-        String Content = edtContent.getText().toString();
+        String content = edtContent.getText().toString();
         String image = edtImage.getText().toString();
 
         Intent intent = getIntent();
 
         int id = intent.getIntExtra("Id", 0);
 
-        return new Story(nameStory, Content, image, id);
+        return new Story(nameStory, content, image, id);
     }
 }

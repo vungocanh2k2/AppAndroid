@@ -70,13 +70,7 @@ public class MainActivity extends AppCompatActivity {
         email = intent.getStringExtra("email");
         nameUser = intent.getStringExtra("username");
 
-        toolbar = findViewById(R.id.toolbarmanhinhchinh);
-        viewFlipper = findViewById(R.id.viewflipper);
-        listViewNew = findViewById(R.id.listviewNew);
-        listView = findViewById(R.id.listviewmanhinhchinh);
-        listViewThongTin = findViewById(R.id.listviewthongtin);
-        navigationView = findViewById(R.id.navigatationView);
-        drawerLayout = findViewById(R.id.drawerlayout);
+        initUI();
 
         storyArrayList = new ArrayList<>();
 
@@ -97,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         cursor1.moveToFirst();
         cursor1.close();
 
-        //thong tin
+        //thong tin man navi
         userArrayList = new ArrayList<>();
         userArrayList.add(new User(nameUser, email));
 
@@ -107,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         boolean isAdmin = i == 2;
 
         categoryArrayList = new ArrayList<>();
+        categoryArrayList.add(new Category("Truyện yêu thích", R.drawable.baseline_favorite_24));
         categoryArrayList.add(new Category("Thông Tin App", R.drawable.baseline_info_24));
         categoryArrayList.add(new Category("Cài Đặt", R.drawable.baseline_settings_24));
         categoryArrayList.add(new Category("Liên Hệ", R.drawable.baseline_send_24));
@@ -132,8 +127,13 @@ public class MainActivity extends AppCompatActivity {
 
                 String nameStory = storyArrayList.get(position).getNameStory();
                 String content = storyArrayList.get(position).getContent();
-                intent.putExtra("tentruyen", nameStory);
-                intent.putExtra("noidung", content);
+                String image = storyArrayList.get(position).getImage();
+                String ID_User = String.valueOf(storyArrayList.get(position).getID_TK());
+
+                intent.putExtra("nameStory", nameStory);
+                intent.putExtra("content", content);
+                intent.putExtra("image", image);
+                intent.putExtra("ID_User", ID_User);
                 startActivity(intent);
 
             }
@@ -144,20 +144,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //neu vi tri an vao la thong tin thi chuyen qua man hinh thong tin
-                if (position == 0) {
-                    startActivity(new Intent(MainActivity.this, InformationActivity.class));
+                 if (position == 0) {
+                    startActivity(new Intent(MainActivity.this, FavouriteActivity.class));
                 } else if (position == 1) {
-                    startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                    startActivity(new Intent(MainActivity.this, InformationActivity.class));
                 } else if (position == 2) {
-                    startActivity(new Intent(MainActivity.this, ContactActivity.class));
+                    startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 } else if (position == 3) {
-                    finish();//đăng xuất
+                    startActivity(new Intent(MainActivity.this, ContactActivity.class));
                 } else if (position == 4) {
+                    finish();//đăng xuất
+                } else if (position == 5) {
                     Intent intent = new Intent(MainActivity.this, ListStoryActivity.class);
                     // gui id tai khoan qua man admin
                     intent.putExtra("Id", id_login);
                     startActivity(intent);
-                } else if (position == 5) {
+                } else if (position == 6) {
                     Intent intent = new Intent(MainActivity.this, ListUserActivity.class);
                     // gui id tai khoan qua man admin
                     intent.putExtra("Id", id_login);
@@ -244,5 +246,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void initUI() {
+        toolbar = findViewById(R.id.toolbarmanhinhchinh);
+        viewFlipper = findViewById(R.id.viewflipper);
+        listViewNew = findViewById(R.id.listviewNew);
+        listView = findViewById(R.id.listviewmanhinhchinh);
+        listViewThongTin = findViewById(R.id.listviewthongtin);
+        navigationView = findViewById(R.id.navigatationView);
+        drawerLayout = findViewById(R.id.drawerlayout);
     }
 }
