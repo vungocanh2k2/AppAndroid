@@ -71,6 +71,7 @@ public class AdapterStory extends BaseAdapter{
 
             Picasso.get().load(story.getImage()).placeholder(R.drawable.ic_load)
                     .error(R.drawable.logo_image).into(viewHolder.imageStory);
+            notifyDataSetChanged();
             return convertView;
         }
     }

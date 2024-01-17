@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="@string/login"
@@ -75,15 +75,5 @@
         android:text="@string/dangki"
         android:textColor="@color/white" />
 
-    <ImageButton
-        android:id="@+id/thaydoingonngu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="end|bottom"
-        android:background="@android:color/transparent"
-        android:src="@drawable/baseline_language_24"
-        android:contentDescription="@string/change_language" />
 
 </LinearLayout>

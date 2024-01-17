@@ -60,7 +60,7 @@ public class AddStoryActivity extends AppCompatActivity {
 
     }
 
-    // phuong thuc tao truyen
+    // Phương thức tạo truyện
     private Story CreateStory() {
         String nameStory = edtnameStory.getText().toString();
         String content = edtContent.getText().toString();

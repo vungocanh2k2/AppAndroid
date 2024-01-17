@@ -2,7 +2,6 @@ package com.example.app_c_truyn.Admin.Story;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,7 +14,9 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.example.app_c_truyn.Adapter.AdapterStory;
+import com.example.app_c_truyn.ContentActivity;
 import com.example.app_c_truyn.Database.DatabaseStory;
+import com.example.app_c_truyn.MainActivity;
 import com.example.app_c_truyn.Model.Story;
 import com.example.app_c_truyn.R;
 
@@ -31,7 +32,6 @@ public class ListStoryActivity extends AppCompatActivity {
     DatabaseStory databaseStory;
 
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +73,26 @@ public class ListStoryActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 showOptionsDialog(position);
                 return false;
+            }
+        });
+
+        //Bắt sự kiện khi click vào truyện sẽ xem truyện chi tiết
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListStoryActivity.this, ContentActivity.class);
+
+                String nameStory = storyArrayList.get(position).getNameStory();
+                String content = storyArrayList.get(position).getContent();
+                String image = storyArrayList.get(position).getImage();
+                String ID_User = String.valueOf(storyArrayList.get(position).getID_TK());
+
+                intent.putExtra("nameStory", nameStory);
+                intent.putExtra("content", content);
+                intent.putExtra("image", image);
+                intent.putExtra("ID_User", ID_User);
+                startActivity(intent);
+
             }
         });
     }
