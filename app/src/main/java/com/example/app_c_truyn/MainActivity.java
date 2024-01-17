@@ -91,34 +91,6 @@ public class MainActivity extends AppCompatActivity {
         cursor1.moveToFirst();
         cursor1.close();
 
-        //thong tin man navi
-        userArrayList = new ArrayList<>();
-        userArrayList.add(new User(nameUser, email));
-
-        adapterInformation = new AdapterInformation(this, R.layout.item_nagivation, userArrayList);
-        listViewThongTin.setAdapter(adapterInformation);
-
-        boolean isAdmin = i == 2;
-
-        categoryArrayList = new ArrayList<>();
-        categoryArrayList.add(new Category("Truyện yêu thích", R.drawable.baseline_favorite_24));
-        categoryArrayList.add(new Category("Thông Tin App", R.drawable.baseline_info_24));
-        categoryArrayList.add(new Category("Cài Đặt", R.drawable.baseline_settings_24));
-        categoryArrayList.add(new Category("Liên Hệ", R.drawable.baseline_send_24));
-        categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
-
-        if (isAdmin) {
-            categoryArrayList.add(new Category("Quản lý truyện", R.drawable.ic_post_add));
-            categoryArrayList.add(new Category("Quản lý người dùng", R.drawable.baseline_manage_accounts_24));
-        }
-
-        // Tạo adapter cho danh sách chuyên mục
-        adapterCategory = new AdapterCategory(this, R.layout.item_category, categoryArrayList);
-        listView.setAdapter(adapterCategory);
-
-        ActionBar();
-        ActionViewFlipper();
-
         // bat su kien click item
         listViewNew.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -139,27 +111,61 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //thong tin man navi
+        userArrayList = new ArrayList<>();
+        userArrayList.add(new User(nameUser, email));
+
+        adapterInformation = new AdapterInformation(this, R.layout.item_nagivation, userArrayList);
+        listViewThongTin.setAdapter(adapterInformation);
+
+        boolean isAdmin = i == 2;
+
+        categoryArrayList = new ArrayList<>();
+        categoryArrayList.add(new Category("Thông tin cá nhân", R.drawable.baseline_person_24));
+        categoryArrayList.add(new Category("Truyện yêu thích", R.drawable.baseline_favorite_24));
+        categoryArrayList.add(new Category("Cài Đặt", R.drawable.baseline_settings_24));
+        categoryArrayList.add(new Category("Thông Tin App", R.drawable.baseline_info_24));
+        categoryArrayList.add(new Category("Liên Hệ", R.drawable.baseline_send_24));
+        categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
+
+        if (isAdmin) {
+            categoryArrayList.add(new Category("Quản lý truyện", R.drawable.ic_post_add));
+            categoryArrayList.add(new Category("Quản lý người dùng", R.drawable.baseline_manage_accounts_24));
+        }
+
+        // Tạo adapter cho danh sách chuyên mục
+        adapterCategory = new AdapterCategory(this, R.layout.item_category, categoryArrayList);
+        listView.setAdapter(adapterCategory);
+
+        ActionBar();
+        ActionViewFlipper();
+
         // bat click item cho listview
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //neu vi tri an vao la thong tin thi chuyen qua man hinh thong tin
-                 if (position == 0) {
-                    startActivity(new Intent(MainActivity.this, FavouriteActivity.class));
+                if (position == 0) {
+                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    // gui id tai khoan qua man thong tin ca nhan
+                    intent.putExtra("Id", id_login);
+                    startActivity(intent);
                 } else if (position == 1) {
-                    startActivity(new Intent(MainActivity.this, InformationActivity.class));
+                    startActivity(new Intent(MainActivity.this, FavouriteActivity.class));
                 } else if (position == 2) {
                     startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 } else if (position == 3) {
-                    startActivity(new Intent(MainActivity.this, ContactActivity.class));
+                    startActivity(new Intent(MainActivity.this, InformationActivity.class));
                 } else if (position == 4) {
-                    finish();//đăng xuất
+                    startActivity(new Intent(MainActivity.this, ContactActivity.class));
                 } else if (position == 5) {
+                    finish();//đăng xuất
+                } else if (position == 6) {
                     Intent intent = new Intent(MainActivity.this, ListStoryActivity.class);
                     // gui id tai khoan qua man admin
                     intent.putExtra("Id", id_login);
                     startActivity(intent);
-                } else if (position == 6) {
+                } else if (position == 7) {
                     Intent intent = new Intent(MainActivity.this, ListUserActivity.class);
                     // gui id tai khoan qua man admin
                     intent.putExtra("Id", id_login);

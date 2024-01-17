@@ -169,7 +169,6 @@ public class DatabaseStory extends SQLiteOpenHelper {
                 + ID_TAI_KHOAN + " INTEGER , FOREIGN KEY ( " + ID_TAI_KHOAN + " ) REFERENCES "
                 + TABLE_TAIKHOAN + "(" + ID_TAI_KHOAN + "))";
         db.execSQL(CREATE_TABLE_FAVORITE);
-
     }
 
     @Override
