@@ -17,7 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     EditText edtDKTaiKhoan, edtDKMatKhau, edtDKEmail;
     Button btnDKDangKy;
-    ImageButton  btnDKDangNhap;
+    ImageButton  backBtn;
     DatabaseStory db;
 
     @Override
@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
-        btnDKDangNhap.setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -64,23 +64,20 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
-
-
     private User CreateUser() {
-        String userName = edtDKTaiKhoan.getText().toString();
+        String nameStory = edtDKTaiKhoan.getText().toString();
         String passWord = edtDKMatKhau.getText().toString();
         String email = edtDKEmail.getText().toString();
-        int phanquyen = 1;
+        int role = 1;
 
-        User user = new User();
-        return user;
+        return new User(nameStory,passWord,email,role,null);
     }
 
     private void AnhXa() {
         edtDKEmail = findViewById(R.id.dkemail);
         edtDKTaiKhoan = findViewById(R.id.dktaikhoan);
         edtDKMatKhau = findViewById(R.id.dkmatkhau);
-        btnDKDangKy = findViewById(R.id.dkdangky);
-        btnDKDangNhap = findViewById(R.id.dkdangnhap);
+        btnDKDangKy = findViewById(R.id.dangky);
+        backBtn = findViewById(R.id.back_Dk);
     }
 }

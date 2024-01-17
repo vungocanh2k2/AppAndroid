@@ -80,6 +80,6 @@ public class AddUserActivity extends AppCompatActivity {
         String passWord = edtPassword.getText().toString();
         String email = edtEmail.getText().toString();
         int role = 1;
-        return new User(userName, passWord, email, role);
+        return new User(userName, passWord, email, role,null);
     }
 }

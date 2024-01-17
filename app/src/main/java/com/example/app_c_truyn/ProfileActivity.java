@@ -3,7 +3,11 @@ package com.example.app_c_truyn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,9 +19,7 @@ import com.example.app_c_truyn.Model.User;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private EditText edtUsername;
-    private EditText edtPassword;
-    private EditText edtEmail;
+    private EditText edtUsername,edtPassword,edtEmail;
     private User user;
     private DatabaseStory db;
 
@@ -53,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
                 String newUsername = edtUsername.getText().toString().trim();
                 String newPassword = edtPassword.getText().toString().trim();
                 String newEmail = edtEmail.getText().toString().trim();
+                String newImage = edtEmail.getText().toString().trim();
 
                 // Kiểm tra tài khoản, mật khẩu và email có đúng định dạng không
                 if (newUsername.length() < 6) {
@@ -70,10 +73,12 @@ public class ProfileActivity extends AppCompatActivity {
                     user.setUserName(newUsername);
                     user.setPassWord(newPassword);
                     user.setEmail(newEmail);
+                    user.setEmail(newImage);
                     db.updateUser(user);
 
                     // Hiển thị thông báo thành công
-                    Toast.makeText(getApplicationContext(), "Thông tin người dùng được cập nhật thành công", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),
+                            "Thông tin người dùng được cập nhật thành công", Toast.LENGTH_LONG).show();
                     // Kết thúc activity
                     finish();
                 }

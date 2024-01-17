@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     ListView listView, listViewNew, listViewThongTin;
     DrawerLayout drawerLayout;
-    String email, nameUser;
+    String email, nameUser, image_profile;
 
     ArrayList<Category> categoryArrayList;
     ArrayList<Story> storyArrayList;
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         int role = intent.getIntExtra("role", 0);
         int id_login = intent.getIntExtra("id", 0);
         email = intent.getStringExtra("email");
+        image_profile = intent.getStringExtra("image_profile");
         nameUser = intent.getStringExtra("username");
 
         initUI();
@@ -130,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
             categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
             categoryArrayList.add(new Category("Quản lý truyện", R.drawable.ic_post_add));
             categoryArrayList.add(new Category("Quản lý người dùng", R.drawable.baseline_manage_accounts_24));
-        }
-        else {
+        } else {
             categoryArrayList.add(new Category("Thông tin cá nhân", R.drawable.baseline_person_24));
             categoryArrayList.add(new Category("Truyện yêu thích", R.drawable.baseline_favorite_24));
             categoryArrayList.add(new Category("Cài Đặt", R.drawable.baseline_settings_24));
@@ -139,8 +139,6 @@ public class MainActivity extends AppCompatActivity {
             categoryArrayList.add(new Category("Liên Hệ", R.drawable.baseline_send_24));
             categoryArrayList.add(new Category("Đăng Xuất", R.drawable.baseline_logout_24));
         }
-
-
 
 
         // Tạo adapter cho danh sách chuyên mục
