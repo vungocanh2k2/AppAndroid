@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
             viewFlipper.addView(imageView);
         }
         //thiet lap tu dong chay cho viewflipper chay trong 3s
-        viewFlipper.setFlipInterval(3000);
+        viewFlipper.setFlipInterval(2000);
         //run auto
         viewFlipper.setAutoStart(true);
         //gọi animation cho vao va ra

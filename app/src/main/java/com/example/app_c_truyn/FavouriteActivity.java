@@ -104,7 +104,7 @@ public class FavouriteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int storyId = favoriteList.get(position).getID();
-                db.DeleteStoryFavo(storyId);
+                db.DeleteStoryFavorite(storyId);
 
                 // Refresh the activity
                 Intent intent = new Intent(FavouriteActivity.this, FavouriteActivity.class);

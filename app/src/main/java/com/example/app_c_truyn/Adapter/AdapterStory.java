@@ -70,7 +70,7 @@ public class AdapterStory extends BaseAdapter{
             viewHolder.txtNameStory.setText(story.getNameStory());
 
             Picasso.get().load(story.getImage()).placeholder(R.drawable.ic_load)
-                    .error(R.drawable.ic_image).into(viewHolder.imageStory);
+                    .error(R.drawable.logo_image).into(viewHolder.imageStory);
             return convertView;
         }
     }

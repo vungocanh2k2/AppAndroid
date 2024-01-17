@@ -30,6 +30,8 @@ public class DatabaseStory extends SQLiteOpenHelper {
     private static final String NAME_STORY = "title";
     private static final String CONTENT = "content";
     private static final String IMAGE = "image";
+    private static final String TABLE_FAVORITE = "favorite";
+
 
     private Context context;
     private final String SQLQuery1 = "INSERT INTO story VALUES (null,'Hai quan đấy!','Lão quan nọ có tính nịnh vợ. Lão ra lệnh hễ ai gặp cũng phải chào: “Lạy hai quan ạ!”.\n" +
@@ -160,9 +162,15 @@ public class DatabaseStory extends SQLiteOpenHelper {
         db.execSQL(SQLQuery4);
         db.execSQL(SQLQuery5);
 
+        String CREATE_TABLE_FAVORITE = "CREATE TABLE " + TABLE_FAVORITE + " ( " + ID_STORY + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + NAME_STORY + " TEXT UNIQUE, "
+                + CONTENT + " TEXT, "
+                + IMAGE + " TEXT, "
+                + ID_TAI_KHOAN + " INTEGER , FOREIGN KEY ( " + ID_TAI_KHOAN + " ) REFERENCES "
+                + TABLE_TAIKHOAN + "(" + ID_TAI_KHOAN + "))";
+        db.execSQL(CREATE_TABLE_FAVORITE);
 
     }
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -333,5 +341,30 @@ public class DatabaseStory extends SQLiteOpenHelper {
     public int Delete(int i) {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.delete(TABLE_STORY, ID_STORY + " = " + i, null);
+    }
+    //Thêm truyện vào mục yêu thích
+    public void addFavoriteStory(Story story) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(NAME_STORY, story.getNameStory());
+        values.put(CONTENT, story.getContent());
+        values.put(IMAGE, story.getImage());
+        values.put(ID_TAI_KHOAN, story.getID_TK());
+
+        db.insert(TABLE_FAVORITE, null, values);
+        db.close();
+    }
+
+    // Method to get all favorite stories as a List
+    public Cursor getAllFavoriteStoriesList() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_FAVORITE, null);
+    }
+
+    //Xóa yêu thích truyện
+    public int DeleteStoryFavorite(int i) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.delete(TABLE_FAVORITE, ID_STORY + " = " + i, null);
     }
 }
