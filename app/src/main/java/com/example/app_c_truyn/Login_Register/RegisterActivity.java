@@ -12,9 +12,7 @@ import android.widget.Toast;
 import com.example.app_c_truyn.Database.DatabaseStory;
 import com.example.app_c_truyn.Model.User;
 import com.example.app_c_truyn.R;
-
 public class RegisterActivity extends AppCompatActivity {
-
     EditText edtDKTaiKhoan, edtDKMatKhau, edtDKEmail;
     Button btnDKDangKy;
     ImageButton  backBtn;
@@ -26,9 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         db = new DatabaseStory(this);
-
         AnhXa();
-
         btnDKDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,10 +65,8 @@ public class RegisterActivity extends AppCompatActivity {
         String passWord = edtDKMatKhau.getText().toString();
         String email = edtDKEmail.getText().toString();
         int role = 1;
-
         return new User(nameStory,passWord,email,role,null);
     }
-
     private void AnhXa() {
         edtDKEmail = findViewById(R.id.dkemail);
         edtDKTaiKhoan = findViewById(R.id.dktaikhoan);
