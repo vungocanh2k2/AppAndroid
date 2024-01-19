@@ -12,6 +12,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.app_c_truyn.Login_Register.LoginActivity;
@@ -22,13 +23,19 @@ import java.util.Set;
 public class SettingActivity extends AppCompatActivity {
 
     TextView txtLang, txtColor;
+    ImageButton BtEX;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale();
         setContentView(R.layout.activity_setting);
-
-        txtLang = findViewById(R.id.language);
+        ax();
+        BtEX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         txtLang.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -37,6 +44,11 @@ public class SettingActivity extends AppCompatActivity {
                 changeLanguage();
             }
            });
+    }
+
+    private void ax() {
+        BtEX = findViewById(R.id.exitSetting);
+        txtLang = findViewById(R.id.language);
     }
 
     private void changeLanguage() {
