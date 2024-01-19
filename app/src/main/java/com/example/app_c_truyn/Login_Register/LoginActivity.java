@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // chức năng  ghi nhớ mật khẩu
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,20 +81,21 @@ public class LoginActivity extends AppCompatActivity {
                //
                 Cursor cursor = db.getData();
                 boolean isLoginSuccessful = false;
-
+                 //kiểm tra xem khớp hay không
                 while (cursor.moveToNext()) {
                     String dataUsername = cursor.getString(1);
                     String dataPassword = cursor.getString(2);
 
                     if (dataUsername.equals(userName) && dataPassword.equals(passWord)) {
+                        //đăng nhập thành công
                         isLoginSuccessful = true;
 
                         //// Lưu thông tin đăng nhập vào SharedPreferences nếu "Ghi nhớ " được chọn
                         if (rememberCheckbox.isChecked()) {
                             SharedPreferences.Editor editor = loginPrefs.edit();
-                            editor.putString(KEY_USERNAME, userName);
-                            editor.putString(KEY_PASSWORD, passWord);
-                            editor.putBoolean(KEY_REMEMBER, true);
+                            editor.putString(KEY_USERNAME, userName);//Lưu tên người dùng vào SharedPreferences với khóa là KEY_USERNAME.
+                            editor.putString(KEY_PASSWORD, passWord);//Lưu tên người dùng vào SharedPreferences với khóa là KEY_PASSWORD.
+                            editor.putBoolean(KEY_REMEMBER, true);//
                             editor.apply();
                         }
 

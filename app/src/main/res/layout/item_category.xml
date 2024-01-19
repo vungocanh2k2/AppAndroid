@@ -21,7 +21,7 @@
         android:text="@string/name_Cate"
         android:id="@+id/nameCate"
         android:layout_margin="15dp"
-        android:textColor="@color/red"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="HardcodedText" />

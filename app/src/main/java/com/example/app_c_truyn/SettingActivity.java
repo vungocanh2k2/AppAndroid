@@ -31,18 +31,21 @@ public class SettingActivity extends AppCompatActivity {
         txtLang = findViewById(R.id.language);
 
         txtLang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+             @Override
+             public void onClick(View v) {
                 // Thực hiện chuyển đổi ngôn ngữ
                 changeLanguage();
             }
-        });
+           });
     }
 
     private void changeLanguage() {
         final String[] listItem = {"English", "Tiếng Việt"};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingActivity.this);
+
+        //tiêu đề
         mBuilder.setTitle("Chọn ngôn ngữ");
+
         mBuilder.setSingleChoiceItems(listItem, -1, new DialogInterface.OnClickListener() {
             //-1 chưa đối tượng nào được chọn
             @Override
@@ -78,6 +81,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     public void loadLocale() {
+
         //cho phép lấy giá trị cài đặt từ tệp SharedPreferences.
         SharedPreferences preferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
         //Lấy giá trị của khóa "My_Lang" từ SharedPreferences.
