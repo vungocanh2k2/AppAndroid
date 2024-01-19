@@ -39,12 +39,12 @@ public class ContactActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("message/rfc822");
                 intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"vehoang2k2@gmail.com"});
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
-                intent.putExtra(Intent.EXTRA_TEXT, "Body");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Góp Ý Cho Chúng Tôi ");
+                intent.putExtra(Intent.EXTRA_TEXT, "");
                 try {
                     startActivity(Intent.createChooser(intent, "Send Email"));
                 } catch (ActivityNotFoundException e) {
-                    Toast.makeText(ContactActivity.this, "No email app found.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContactActivity.this, "Không tìm thấy ứng dụng nào.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -63,7 +63,7 @@ public class ContactActivity extends AppCompatActivity {
         btnAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String gitUrl = "https://maps.app.goo.gl/obUW8sgyRBC1MjBh9"; // URL của trang Git
+                String gitUrl = "https://maps.app.goo.gl/4QG1LGNByjysMjac7";
                 Uri uri = Uri.parse(gitUrl);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -73,7 +73,7 @@ public class ContactActivity extends AppCompatActivity {
         btnGit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String gitUrl = "https://github.com/"; // URL của trang Git
+                String gitUrl = "https://github.com/";
                 Uri uri = Uri.parse(gitUrl);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
