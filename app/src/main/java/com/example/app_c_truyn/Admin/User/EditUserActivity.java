@@ -39,9 +39,9 @@ public class EditUserActivity extends AppCompatActivity {
         db = new DatabaseStory(this);
 
         // Lấy thông tin người dùng từ activity trước đó
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            int userId = extras.getInt("userId");
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            int userId = bundle.getInt("userId");
             user = db.getUserById(userId);
 
             edtUsername.setText(user.getUserName());

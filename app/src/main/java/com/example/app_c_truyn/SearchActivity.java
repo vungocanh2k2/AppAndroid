@@ -47,6 +47,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        // Danh sách truyện hiện có trong csdl
         initList();
 
         // Bắt sự kiện khi nhấp vào một item trong danh sách
@@ -56,8 +57,8 @@ public class SearchActivity extends AppCompatActivity {
                 Intent intent = new Intent(SearchActivity.this, ContentActivity.class);
                 String nameStory = arrayList.get(position).getNameStory();
                 String content = arrayList.get(position).getContent();
-                intent.putExtra("tentruyen", nameStory);
-                intent.putExtra("noidung", content);
+                intent.putExtra("nameStory", nameStory);
+                intent.putExtra("content", content);
                 startActivity(intent);
             }
         });

@@ -32,6 +32,7 @@ public class AddStoryActivity extends AppCompatActivity {
         ImageView btnBack = findViewById(R.id.backAddStory);
 
         db = new DatabaseStory(this);
+
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +53,7 @@ public class AddStoryActivity extends AppCompatActivity {
                 if (nameStory.equals("") || Content.equals("") || image.equals("")) {
                     Toast.makeText(AddStoryActivity.this, "Vui lòng nhập đầy đủ thông tin.", Toast.LENGTH_SHORT).show();
                 } else {
+                    // Lưu truyện
                     db.AddStory(story);
                     Toast.makeText(AddStoryActivity.this, "Thêm truyện thành công.", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddStoryActivity.this, ListStoryActivity.class));

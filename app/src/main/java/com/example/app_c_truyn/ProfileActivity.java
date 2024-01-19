@@ -22,7 +22,6 @@ import com.squareup.picasso.Picasso;
 public class ProfileActivity extends AppCompatActivity {
 
     private EditText edtUsername, edtPassword, edtEmail;
-
     private User user;
     private DatabaseStory db;
 
@@ -32,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        // Ánh xạ
         edtUsername = findViewById(R.id.edt_username);
         edtPassword = findViewById(R.id.edt_password);
         edtEmail = findViewById(R.id.edt_email);

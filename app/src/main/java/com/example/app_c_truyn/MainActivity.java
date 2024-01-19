@@ -170,12 +170,12 @@ public class MainActivity extends AppCompatActivity {
                     finish();//đăng xuất
                 } else if (position == 6) {
                     Intent intent = new Intent(MainActivity.this, ListStoryActivity.class);
-                    // gui id tai khoan qua man admin
+                    // gui id tai khoan qua man danh sách truyện
                     intent.putExtra("Id", id_login);
                     startActivity(intent);
                 } else if (position == 7) {
                     Intent intent = new Intent(MainActivity.this, ListUserActivity.class);
-                    // gui id tai khoan qua man admin
+                    // gui id tai khoan qua man danh sách user
                     intent.putExtra("Id", id_login);
                     startActivity(intent);
                 }
@@ -228,8 +228,8 @@ public class MainActivity extends AppCompatActivity {
             //them anh tu image vào view flipper
             viewFlipper.addView(imageView);
         }
-        //thiet lap tu dong chay cho viewflipper chay trong 3s
-        viewFlipper.setFlipInterval(3000);
+        //thiet lap tu dong chay cho viewflipper chay trong 5s
+        viewFlipper.setFlipInterval(5000);
         //run auto
         viewFlipper.setAutoStart(true);
         //gọi animation cho vao va ra

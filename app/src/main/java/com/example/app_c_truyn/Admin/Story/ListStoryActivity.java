@@ -41,7 +41,7 @@ public class ListStoryActivity extends AppCompatActivity {
         buttonAdd = findViewById(R.id.buttonThemtruyen);
         btnBack = findViewById(R.id.backListStory);
 
-        // Khởi tạo danh sách truyện
+        // Khởi tạo danh sách truyện đang có trong csdl
         initList();
 
         // Xử lý sự kiện khi nút "Quay lại" được nhấn
