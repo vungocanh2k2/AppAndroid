@@ -7,13 +7,20 @@
     android:orientation="vertical"
     tools:context=".Login_Register.LoginActivity">
 
+    <ImageButton
+        android:id="@+id/backCt"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:background="@color/black"
+        android:src="@drawable/baseline_arrow_back_24"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="@string/contact"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="50dp"
         android:textStyle="bold"
         tools:ignore="SpUsage" />

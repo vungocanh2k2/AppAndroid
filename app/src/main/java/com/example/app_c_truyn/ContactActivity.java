@@ -8,22 +8,26 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class ContactActivity extends AppCompatActivity {
 
     Button btnEmail, btnPhone, btnAddress, btnGit;
+    ImageButton backCT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
+        Ax();
 
-        btnEmail = findViewById(R.id.email);
-        btnPhone = findViewById(R.id.phone);
-        btnAddress = findViewById(R.id.address);
-        btnGit = findViewById(R.id.git);
-
+        backCT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,5 +76,13 @@ public class ContactActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void Ax() {
+        btnEmail = findViewById(R.id.email);
+        btnPhone = findViewById(R.id.phone);
+        btnAddress = findViewById(R.id.address);
+        btnGit = findViewById(R.id.git);
+        backCT = findViewById(R.id.backCt);
     }
 }
