@@ -60,7 +60,7 @@
         android:layout_margin="10dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/shape_button"
-        android:drawableLeft="@drawable/ic_email"
+        android:drawableLeft="@drawable/baseline_email_24"
         android:drawablePadding="10dp"
         android:hint="@string/email"
         android:padding="15dp"

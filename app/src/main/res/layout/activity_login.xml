@@ -8,27 +8,34 @@
     android:orientation="vertical"
     tools:context=".Login_Register.LoginActivity">
 
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_bg" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="50dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="SpUsage" />
 
     <EditText
         android:id="@+id/taikhoan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/shape_button"
         android:drawableLeft="@drawable/baseline_person_24"
         android:drawablePadding="10dp"
         android:hint="@string/username"
-        android:layout_marginBottom="10dp"
         android:padding="15dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
@@ -42,9 +49,9 @@
         android:drawableLeft="@drawable/baseline_lock_24"
         android:drawablePadding="10dp"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:padding="15dp"
         android:textColor="@color/white"
-        android:inputType="textPassword"
         android:textColorHint="@color/cray" />
 
     <CheckBox
@@ -60,10 +67,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textColor="@color/white"
         android:layout_marginTop="50dp"
         android:background="@drawable/shape_transparent_button_01"
         android:text="@string/login"
+        android:textColor="@color/white"
         android:textSize="30dp" />
 
     <TextView
