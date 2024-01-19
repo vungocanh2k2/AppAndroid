@@ -4,6 +4,7 @@
     tools:ignore="HardcodedText,RtlHardcoded"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:backgroundTint="@color/green"
     android:background="@drawable/shape_button"
     android:layout_height="match_parent">
     <TextView
@@ -11,8 +12,8 @@
         android:layout_marginTop="5dp"
         android:textSize="20sp"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:text="Bạn có đồng ý xóa truyện không ? "
+        android:textColor="@color/black"
+        android:text="Bạn Có Đồng Ý Xóa Truyện Không ? "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <LinearLayout

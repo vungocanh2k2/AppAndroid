@@ -15,6 +15,7 @@ public class InformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_information);
         TextView txtInfo = findViewById(R.id.txtInfo);
         String info = "Hoàng Đình Dũng \nLớp: 62PM2 \nMã sinh viên: 2051063940";
+
         txtInfo.setText(info);
     }
 }

@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     CheckBox rememberCheckbox;
     DatabaseStory db;
 
-    // SharedPreferences for storing login credentials
+    // SharedPreferences để lưu trữ thông tin đăng nhập
     private static final String PREF_NAME = "LoginPrefs";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
@@ -46,14 +46,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         AnhXa();
 
-        // Initialize SharedPreferences
+        // Khởi tạo SharedPreferences
         SharedPreferences loginPrefs = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         boolean remember = loginPrefs.getBoolean(KEY_REMEMBER, false);
 
-        // If "Remember Me" is checked, populate the username and password fields
+        //Nếu "Ghi nhớ " được chọn, hãy điền vào trường tên người dùng và mật khẩu
         if (remember) {
             String savedUsername = loginPrefs.getString(KEY_USERNAME, "");
             String savedPassword = loginPrefs.getString(KEY_PASSWORD, "");
@@ -73,28 +72,30 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // chức năng  ghi nhớ mật khẩu
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String userName = edtTaiKhoan.getText().toString();
                 String passWord = edtMatKhau.getText().toString();
-
+               //
                 Cursor cursor = db.getData();
                 boolean isLoginSuccessful = false;
-
+                 //kiểm tra xem khớp hay không
                 while (cursor.moveToNext()) {
                     String dataUsername = cursor.getString(1);
                     String dataPassword = cursor.getString(2);
 
                     if (dataUsername.equals(userName) && dataPassword.equals(passWord)) {
+                        //đăng nhập thành công
                         isLoginSuccessful = true;
 
-                        // Save login credentials to SharedPreferences if "Remember Me" is checked
+                        //// Lưu thông tin đăng nhập vào SharedPreferences nếu "Ghi nhớ " được chọn
                         if (rememberCheckbox.isChecked()) {
                             SharedPreferences.Editor editor = loginPrefs.edit();
-                            editor.putString(KEY_USERNAME, userName);
-                            editor.putString(KEY_PASSWORD, passWord);
-                            editor.putBoolean(KEY_REMEMBER, true);
+                            editor.putString(KEY_USERNAME, userName);//Lưu tên người dùng vào SharedPreferences với khóa là KEY_USERNAME.
+                            editor.putString(KEY_PASSWORD, passWord);//Lưu tên người dùng vào SharedPreferences với khóa là KEY_PASSWORD.
+                            editor.putBoolean(KEY_REMEMBER, true);//
                             editor.apply();
                         }
 

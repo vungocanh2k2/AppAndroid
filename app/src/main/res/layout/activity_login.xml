@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/green"
     android:orientation="vertical"
     tools:context=".Login_Register.LoginActivity">
 
@@ -15,7 +15,7 @@
         android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="@string/login"
-        android:textColor="@color/white"
+        android:textColor="@color/blue"
         android:textSize="50dp"
         android:textStyle="bold" />
 
@@ -31,7 +31,7 @@
         android:layout_marginBottom="10dp"
         android:padding="15dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/cray" />
+        android:textColorHint="@color/white" />
 
     <EditText
         android:id="@+id/matkhau"
@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textColor="@color/white"
+        android:textColor="@color/red"
         android:layout_marginTop="50dp"
         android:background="@drawable/shape_transparent_button_01"
         android:text="@string/login"
