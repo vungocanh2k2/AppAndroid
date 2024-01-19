@@ -44,6 +44,7 @@ public class SettingActivity extends AppCompatActivity {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingActivity.this);
         mBuilder.setTitle("Chọn ngôn ngữ");
         mBuilder.setSingleChoiceItems(listItem, -1, new DialogInterface.OnClickListener() {
+            //-1 chưa đối tượng nào được chọn
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) {
@@ -62,19 +63,24 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void setLocale(String lang) {
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
+        Locale locale = new Locale(lang);
+
+        Locale.setDefault(locale);//Đặt ngôn ngữ mặc định của ứng dụng thành locale đã tạo.
+        Configuration config = new Configuration();
+        config.locale = locale;//Đặt ngôn ngữ của config thành locale đã tạo.
+        //Cập nhật cấu hình ngôn ngữ của ứng dụng với config đã được thiết lập.
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+        //tạo 1 đối tượng  để chỉnh sửa cài đặt được lưu trong tệp "Settings".
         SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
-        editor.putString("My_Lang", lang);
-        editor.apply();
+        editor.putString("My_Lang", lang);//Đặt giá trị của khóa "My_Lang" trong tệp cài đặt thành lang.
+        editor.apply();//Áp dụng các thay đổi đã chỉnh sửa vào tệp cài đặt.
     }
 
     public void loadLocale() {
+        //cho phép lấy giá trị cài đặt từ tệp SharedPreferences.
         SharedPreferences preferences = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        //Lấy giá trị của khóa "My_Lang" từ SharedPreferences.
         String language = preferences.getString("My_Lang", "");
         setLocale(language);
     }
