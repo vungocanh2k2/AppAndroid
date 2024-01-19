@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.app_c_truyn.Database.DatabaseStory;
@@ -24,11 +25,11 @@ public class AddStoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_story);
 
-        edtImage = findViewById(R.id.dbimg);
-        edtnameStory = findViewById(R.id.dbTentruyen);
-        edtContent = findViewById(R.id.dbnoidung);
-        Button btnAddStory = findViewById(R.id.dbdangbai);
-        ImageButton btnBack = findViewById(R.id.backAddStory);
+        edtImage = findViewById(R.id.imageAddStory);
+        edtnameStory = findViewById(R.id.nameAddStory);
+        edtContent = findViewById(R.id.contentAddStory);
+        Button btnAddStory = findViewById(R.id.btnAddStory);
+        ImageView btnBack = findViewById(R.id.backAddStory);
 
         db = new DatabaseStory(this);
         btnBack.setOnClickListener(new View.OnClickListener() {

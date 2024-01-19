@@ -1,102 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/black"
     tools:context=".Admin.Story.AddStoryActivity">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/backAddStory"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@color/black"
-        android:layout_margin="10dp"
-        android:src="@drawable/baseline_arrow_back_24"/>
-
-    <TextView
-        android:textColor="@color/white"
-        android:layout_marginTop="50dp"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:layout_marginBottom="30dp"
-        android:text="Thêm truyện mới"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:textColor="@color/white"
-        android:layout_marginLeft="10dp"
-        android:text="Tên truyện"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_back_24"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tv_title"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thêm truyện"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/backAddStory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/backAddStory" />
 
     <EditText
-        android:inputType="text"
-        android:id="@+id/dbTentruyen"
+        android:id="@+id/nameAddStory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="Tên truyện"
         android:textColor="@color/white"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
         android:textColorHint="@color/white"
-        android:layout_width="match_parent"
-        android:paddingLeft="10dp"
-        android:background="@drawable/shape_button"
-        android:layout_height="50dp"/>
-
-    <TextView
-        android:textColor="@color/white"
-        android:layout_marginLeft="10dp"
-        android:text="Nội dung"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/dbnoidung"
-        android:inputType="text"
-        android:hint="Nội dung"
-        android:textColor="@color/white"
-        android:layout_gravity="center"
-        android:textColorHint="@color/white"
-        android:layout_margin="10dp"
+        android:id="@+id/contentAddStory"
         android:layout_width="match_parent"
-        android:background="@drawable/shape_button"
-        android:paddingLeft="10dp"
-        android:layout_height="200dp"
-        android:textCursorDrawable="@null" />
-
-    <TextView
+        android:layout_height="0dp"
+        android:hint="Nội dung truyện"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/shape_transparent_button_01"
         android:textColor="@color/white"
-        android:layout_marginLeft="10dp"
-        android:text="Ảnh (Url)"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/nameAddStory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageAddStory" />
 
     <EditText
-        android:inputType="text"
-        android:id="@+id/dbimg"
-        android:hint="Ảnh (Url)"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_gravity="center"
-        android:background="@drawable/shape_button"
-        android:layout_margin="10dp"
+        android:id="@+id/imageAddStory"
         android:layout_width="match_parent"
-        android:paddingLeft="10dp"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"
+        android:hint="Link ảnh (url)"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:layout_margin="15dp"
+        app:layout_constraintTop_toBottomOf="@id/contentAddStory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/dbdangbai"
-        android:text="Lưu"
-        android:layout_margin="10dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        android:textColor="@color/white"
-        android:background="@drawable/shape_transparent_button_01"
-        android:layout_gravity="center"
+        android:id="@+id/btnAddStory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Lưu"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:background="@drawable/shape_transparent_button_01"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/imageAddStory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

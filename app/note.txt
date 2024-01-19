@@ -1,0 +1,8 @@
+ - HOÀNG ĐÌNH DŨNG
+ - Thêm, sửa, xóa (User) admin
+ - Thêm, sửa, xóa truyện
+ - Thay đổi thông tin cá nhân
+ - Hoàn thiện màn navi
+ - Thêm, xóa truyện yêu thích
+ - Làm thêm phần setting thay đổi ngôn
+ - Làm màn liên lạc

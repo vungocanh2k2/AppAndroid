@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,8 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.app_c_truyn.Login_Register.LoginActivity;
@@ -22,19 +25,34 @@ import java.util.Set;
 public class SettingActivity extends AppCompatActivity {
 
     TextView txtLang, txtColor;
+    LinearLayout layoutLang,layoutVer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale();
         setContentView(R.layout.activity_setting);
 
-        txtLang = findViewById(R.id.language);
+        layoutLang = findViewById(R.id.language);
+        layoutVer = findViewById(R.id.version);
 
-        txtLang.setOnClickListener(new View.OnClickListener() {
+        ImageButton imageButton = findViewById(R.id.backSetting);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        layoutLang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Thực hiện chuyển đổi ngôn ngữ
                 changeLanguage();
+            }
+        });
+        layoutVer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingActivity.this, VersionActivity.class));
             }
         });
     }

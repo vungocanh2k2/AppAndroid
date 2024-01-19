@@ -6,8 +6,9 @@
     android:layout_gravity="center_vertical"
     android:background="@color/black"
     android:orientation="vertical"
-    tools:context=".ProfileActivity"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".ProfileActivity">
+
 
     <ImageButton
         android:id="@+id/back_EditUser"
@@ -21,21 +22,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="40dp"
         android:text="Thông tin cá nhân"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="35sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
 
+    <ImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:src="@drawable/user_icon2" />
 
     <EditText
         android:id="@+id/edt_username"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/shape_button"
         android:drawableStart="@drawable/baseline_person_24"
         android:drawablePadding="10dp"
@@ -67,22 +74,8 @@
         android:drawableStart="@drawable/ic_email"
         android:drawablePadding="10dp"
         android:hint="Email"
-        android:textColor="@color/white"
         android:inputType="text"
-        android:textColorHint="@color/white" />
-
-    <EditText
-        android:id="@+id/edt_image"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/shape_button"
-        android:drawableStart="@drawable/baseline_photo_library_24"
-        android:drawablePadding="10dp"
-        android:hint="Ảnh đại diện (Không cần thiết)"
         android:textColor="@color/white"
-        android:inputType="text"
         android:textColorHint="@color/white" />
 
     <Button
@@ -92,7 +85,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/shape_transparent_button_01"
         android:text="Lưu"
-        android:textColor="@color/white"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="30dp" />
 </LinearLayout>

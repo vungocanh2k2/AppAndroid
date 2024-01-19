@@ -5,16 +5,16 @@ public class User {
     private String UserName;
     private String PassWord;
     private String Email;
-    private int Roles;
+    private int Role;
     private String ImagePath;
 
     public User() {}
 
-    public User(String userName, String passWord, String email, int roles, String imagePath) {
+    public User(String userName, String passWord, String email, int role, String imagePath) {
         UserName = userName;
         PassWord = passWord;
         Email = email;
-        Roles = roles;
+        Role = role;
         ImagePath = imagePath;
     }
 
@@ -61,12 +61,12 @@ public class User {
         Email = email;
     }
 
-    public int getRoles() {
-        return Roles;
+    public int getRole() {
+        return Role;
     }
 
-    public void setRoles(int roles) {
-        Roles = roles;
+    public void setRole(int role) {
+        Role = role;
     }
 
     public String getImagePath() {

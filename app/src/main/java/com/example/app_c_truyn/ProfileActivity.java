@@ -12,14 +12,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.app_c_truyn.Database.DatabaseStory;
 import com.example.app_c_truyn.Model.User;
+import com.squareup.picasso.Picasso;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private EditText edtUsername,edtPassword,edtEmail;
+    private EditText edtUsername, edtPassword, edtEmail;
+
     private User user;
     private DatabaseStory db;
 
@@ -55,7 +58,6 @@ public class ProfileActivity extends AppCompatActivity {
                 String newUsername = edtUsername.getText().toString().trim();
                 String newPassword = edtPassword.getText().toString().trim();
                 String newEmail = edtEmail.getText().toString().trim();
-                String newImage = edtEmail.getText().toString().trim();
 
                 // Kiểm tra tài khoản, mật khẩu và email có đúng định dạng không
                 if (newUsername.length() < 6) {
@@ -73,7 +75,6 @@ public class ProfileActivity extends AppCompatActivity {
                     user.setUserName(newUsername);
                     user.setPassWord(newPassword);
                     user.setEmail(newEmail);
-                    user.setEmail(newImage);
                     db.updateUser(user);
 
                     // Hiển thị thông báo thành công

@@ -77,7 +77,7 @@ public class ListStoryActivity extends AppCompatActivity {
         });
 
         //Bắt sự kiện khi click vào truyện sẽ xem truyện chi tiết
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListStoryActivity.this, ContentActivity.class);
@@ -94,7 +94,7 @@ public class ListStoryActivity extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        });*/
     }
 
     // Hiển thị dialog chọn tùy chọn (Chỉnh sửa hoặc Xóa) khi giữ lâu vào một mục trên danh sách
