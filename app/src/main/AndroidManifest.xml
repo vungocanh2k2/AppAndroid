@@ -31,7 +31,7 @@
             android:name=".ContactActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".SettingAppActivity"
             android:exported="false" />
         <activity
             android:name=".Login_Register.LoginActivity"

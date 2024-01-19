@@ -70,6 +70,4 @@
         android:text="Githup"
         android:textColor="@color/white"
         android:textSize="30dp" />
-
-
 </LinearLayout>
