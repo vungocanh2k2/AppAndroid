@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -324,28 +323,13 @@ public class DatabaseStory extends SQLiteOpenHelper {
         db.close();
     }
 
-    //Sửa truyện
-    public boolean updateStory(Story story) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(NAME_STORY, story.getNameStory());
-        values.put(CONTENT, story.getContent());
-        values.put(IMAGE, story.getImage());
-
-        int rowsAffected = db.update(TABLE_STORY, values, ID_STORY + " = ?",
-                new String[]{String.valueOf(story.getID())});
-
-        db.close();
-
-        return rowsAffected > 0;
-    }
 
     //Xóa truyện
     public int Delete(int i) {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.delete(TABLE_STORY, ID_STORY + " = " + i, null);
     }
+
     //Thêm truyện vào mục yêu thích
     public void addFavoriteStory(Story story) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -360,15 +344,15 @@ public class DatabaseStory extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Method to get all favorite stories as a List
+    // Lấy tất cả truyện yêu thích trong csdl
     public Cursor getAllFavoriteStoriesList() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_FAVORITE, null);
     }
 
-    //Xóa yêu thích truyện
-    public int DeleteStoryFavorite(int i) {
+    // Xóa truyện yêu thích
+    public void DeleteStoryFavorite(int i) {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.delete(TABLE_FAVORITE, ID_STORY + " = " + i, null);
+        db.delete(TABLE_FAVORITE, ID_STORY + " = " + i, null);
     }
 }

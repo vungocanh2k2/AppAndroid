@@ -71,7 +71,7 @@ public class ListStoryActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                showOptionsDialog(position);
+                showDeleteConfirmationDialog(position);
                 return false;
             }
         });
@@ -97,44 +97,7 @@ public class ListStoryActivity extends AppCompatActivity {
         });*/
     }
 
-    // Hiển thị dialog chọn tùy chọn (Chỉnh sửa hoặc Xóa) khi giữ lâu vào một mục trên danh sách
-    private void showOptionsDialog(int position) {
-        Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.dialog_optical);
-        dialog.setCanceledOnTouchOutside(false);
-
-        Button btnEdit = dialog.findViewById(R.id.buttonEdit);
-        Button btnDelete = dialog.findViewById(R.id.buttonDelete);
-
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Lấy ID của truyện được chọn
-                int storyId = storyArrayList.get(position).getID();
-                String nameStory = storyArrayList.get(position).getNameStory();
-                String content = storyArrayList.get(position).getContent();
-                String image = storyArrayList.get(position).getImage();
-                // Truyền ID truyện đó sang EditStoryActivity
-                Intent intent = new Intent(ListStoryActivity.this, EditStoryActivity.class);
-                intent.putExtra("story_id", storyId);
-                intent.putExtra("nameStory", nameStory);
-                intent.putExtra("content", content);
-                intent.putExtra("image", image);
-                startActivity(intent);
-                dialog.dismiss();
-            }
-        });
-
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDeleteConfirmationDialog(position);
-                dialog.dismiss();
-            }
-        });
-        dialog.show();
-    }
-
+    // Hiển thị dialog chọn tùy chọn (Chỉnh sửa hoặc Xóa) khi giữ lâu vào một mục trên danh sách !
     // Hiển thị dialog xác nhận xóa khi nhấn nút Xóa trong dialog tùy chọn
     private void showDeleteConfirmationDialog(int position) {
         Dialog dialog = new Dialog(this);
