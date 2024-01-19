@@ -26,9 +26,15 @@
         android:text="Thông tin cá nhân"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="35sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:src="@drawable/user_icon2"/>
 
 
     <EditText
@@ -67,20 +73,6 @@
         android:drawableStart="@drawable/ic_email"
         android:drawablePadding="10dp"
         android:hint="Email"
-        android:textColor="@color/white"
-        android:inputType="text"
-        android:textColorHint="@color/white" />
-
-    <EditText
-        android:id="@+id/edt_image"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/shape_button"
-        android:drawableStart="@drawable/baseline_photo_library_24"
-        android:drawablePadding="10dp"
-        android:hint="Ảnh đại diện (Không cần thiết)"
         android:textColor="@color/white"
         android:inputType="text"
         android:textColorHint="@color/white" />

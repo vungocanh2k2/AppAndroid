@@ -20,7 +20,11 @@ public class ContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
-        Ax();
+        btnEmail = findViewById(R.id.email);
+        btnPhone = findViewById(R.id.phone);
+        btnAddress = findViewById(R.id.address);
+        btnGit = findViewById(R.id.git);
+        backCT = findViewById(R.id.backCt);
 
         backCT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,8 +63,8 @@ public class ContactActivity extends AppCompatActivity {
         btnAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String address = "https://maps.app.goo.gl/obUW8sgyRBC1MjBh9"; // Địa chỉ cần hiển thị
-                Uri uri = Uri.parse("geo:0,0?q=" + Uri.encode(address));
+                String gitUrl = "https://maps.app.goo.gl/obUW8sgyRBC1MjBh9"; // URL của trang Git
+                Uri uri = Uri.parse(gitUrl);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
@@ -69,7 +73,7 @@ public class ContactActivity extends AppCompatActivity {
         btnGit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String gitUrl = "https://maps.app.goo.gl/obUW8sgyRBC1MjBh9"; // URL của trang Git
+                String gitUrl = "https://github.com/"; // URL của trang Git
                 Uri uri = Uri.parse(gitUrl);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
@@ -78,11 +82,7 @@ public class ContactActivity extends AppCompatActivity {
 
     }
 
-    private void Ax() {
-        btnEmail = findViewById(R.id.email);
-        btnPhone = findViewById(R.id.phone);
-        btnAddress = findViewById(R.id.address);
-        btnGit = findViewById(R.id.git);
-        backCT = findViewById(R.id.backCt);
-    }
+
+
+
 }

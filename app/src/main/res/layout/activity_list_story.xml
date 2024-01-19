@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
+    android:background="@color/black"
     tools:context=".Admin.Story.ListStoryActivity">
 
     <LinearLayout
@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_margin="8dp"
-                android:textColor="@color/blue"
+                android:textColor="@color/white"
                 android:background="@drawable/shape_transparent_button_01"
                 android:text="Thêm Truyện"
                 tools:ignore="HardcodedText" />

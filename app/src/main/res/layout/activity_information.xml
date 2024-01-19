@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/green"
+    android:background="@color/black"
     tools:context=".InformationActivity">
 
     <LinearLayout
@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="Thông Tin"
             android:textSize="35sp"
-            android:textColor="@color/blue"
+            android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>
     <TextView

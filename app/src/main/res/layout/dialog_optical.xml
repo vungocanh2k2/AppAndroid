@@ -13,7 +13,7 @@
         android:gravity="center"
         android:text="Chức Năng"
         android:textColor="@color/white"
-        android:textSize="40sp" />
+        android:textSize="30sp" />
 
     <LinearLayout
 
