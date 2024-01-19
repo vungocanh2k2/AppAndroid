@@ -1,9 +1,5 @@
 package com.example.app_c_truyn;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,17 +7,15 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.example.app_c_truyn.Login_Register.LoginActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
-import java.util.Set;
 
-public class SettingActivity extends AppCompatActivity {
+public class SettingAppActivity extends AppCompatActivity {
 
     LinearLayout layoutLang,layoutVer;
     @Override
@@ -50,14 +44,14 @@ public class SettingActivity extends AppCompatActivity {
         layoutVer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SettingActivity.this, VersionActivity.class));
+                startActivity(new Intent(SettingAppActivity.this, VersionActivity.class));
             }
         });
     }
 
     private void changeLanguage() {
         final String[] listItem = {"English", "Tiếng Việt"};
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingActivity.this);
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingAppActivity.this);
         mBuilder.setTitle("Chọn ngôn ngữ");
         mBuilder.setSingleChoiceItems(listItem, -1, new DialogInterface.OnClickListener() {
             @Override

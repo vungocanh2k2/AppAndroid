@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (position == 1) {
                     startActivity(new Intent(MainActivity.this, FavouriteActivity.class));
                 } else if (position == 2) {
-                    startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                    startActivity(new Intent(MainActivity.this, SettingAppActivity.class));
                 } else if (position == 3) {
                     startActivity(new Intent(MainActivity.this, InformationActivity.class));
                 } else if (position == 4) {
